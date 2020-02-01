@@ -1,0 +1,120 @@
+<ion-header class="my-profile-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">            
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>{{profileDetails?.User[0].firstname}} Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="my-profile-page">
+    <app-error-handler #errorHandler></app-error-handler>
+    <div class="user-img-wrap">
+        <img [src]="profileDetails?.User[0].UserProfilePic ? profileDetails?.User[0].UserProfilePic : 'assets/images/default-avatar.png'" class="user-image" />        
+    </div>
+    <h6>{{profileDetails?.User[0].firstname}} {{profileDetails?.User[0].LastName}}</h6>
+
+    <ion-list>
+        <ion-item lines="full" class="section-devider">
+            <ion-label>Bio</ion-label>                        
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="person" color="primary"></ion-icon>
+            <ion-label>
+                <h3>First Name</h3>
+                <p>{{profileDetails?.User[0].firstname}}</p>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="person" color="primary"></ion-icon>
+            <ion-label>
+                <h3>Last Name</h3>
+                <p>{{profileDetails?.User[0].LastName}}</p>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="phone-portrait" color="primary"></ion-icon>
+            <ion-label>
+                <h3>Mobile</h3>
+                <p>{{profileDetails?.User[0].Phone}}</p>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="gift" color="primary"></ion-icon>
+            <ion-label>
+                <h3>Birthday</h3>
+                <p>{{profileDetails?.User[0].DateOfBirth}}</p>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="man" color="primary"></ion-icon>
+            <ion-label>
+                <h3>Gender</h3>
+                <p>{{profileDetails?.User[0].Gender}}</p>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="pin" color="primary"></ion-icon>
+            <ion-label>
+                <h3>City</h3>
+                <p>{{profileDetails?.User[0].City}}</p>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="contact" color="primary"></ion-icon>
+            <ion-label>
+                <h3>Username</h3>
+                <p>{{profileDetails?.User[0].AppUserName}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-item class="section-devider" lines="full">
+            <ion-label>Work</ion-label>           
+        </ion-item>
+        <ion-card *ngFor="let item of profileDetails?.UserWorkDetails;">
+            <ion-item lines="full">
+                <ion-icon slot="start" name="briefcase" color="primary"></ion-icon>
+                <ion-label>{{item.CompanyName}}</ion-label>                
+            </ion-item>
+            <ion-card-content text-left class="cust-card">
+                <p><strong>Description: </strong>{{item.Description}}</p>
+                <p><strong>Address: </strong> {{item.Address}}</p>
+                <p><strong>Position: </strong>{{item.Position}}</p>
+                <hr>
+                <ion-row>
+                    <ion-col text-left>
+                        <strong>From: </strong> {{item.fromdate}}
+                    </ion-col>
+                    <ion-col>
+                        <strong>To: </strong>{{item.ToDate}}
+                    </ion-col>
+                </ion-row>                
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+
+    <ion-list>
+        <ion-item class="section-devider" lines="full">
+            <ion-label>Education</ion-label>            
+        </ion-item>
+        <ion-card *ngFor="let item of profileDetails?.UserEducationDetails;">
+            <ion-item lines="full">
+                <ion-icon slot="start" name="school" color="primary"></ion-icon>
+                <ion-label>{{item.schoolname}}</ion-label>                
+            </ion-item>
+            <ion-card-content text-left class="cust-card">
+                <p><strong>Description:</strong> {{item.Description}}</p>
+                <hr>
+                <ion-row>
+                    <ion-col text-left>
+                        <strong>From: </strong> {{item.fromdate}}
+                    </ion-col>
+                    <ion-col>
+                        <strong>To: </strong>{{item.ToDate}}
+                    </ion-col>
+                </ion-row>                
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>

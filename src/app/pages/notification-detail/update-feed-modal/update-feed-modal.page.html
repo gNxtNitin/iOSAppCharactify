@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-icon slot="icon-only" name="arrow-back" (click)="close()"></ion-icon>
+        </ion-buttons>
+        <ion-title>
+            Update your feed
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <ion-item lines="none">
+        <ion-avatar slot="start">
+            <img [src]="userData.UserProfilePic ? userData.UserProfilePic : 'assets/images/default-avatar.png'">
+        </ion-avatar>
+        <ion-label>
+            {{userData.FirstName}}
+        </ion-label>
+    </ion-item>
+    <ion-textarea padding rows="10" cols="20" [(ngModel)]="description" placeholder="Update your feed..."></ion-textarea>
+</ion-content>
+<ion-footer class="comment-footer" text-right>
+    <ion-button color="primary" slot="right" style="margin: 10px;" class="send-request-btn" size="small" shape="round" (click)="updateComment()">
+        Update
+    </ion-button>
+</ion-footer>

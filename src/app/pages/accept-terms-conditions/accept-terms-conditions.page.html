@@ -1,0 +1,38 @@
+<ion-content class="terms-and-condition-page" fullscreen>
+    <ion-img src="assets/images/charactify-logo.png"></ion-img>
+    <app-error-handler #errorHandler></app-error-handler>
+
+    <div class="user-img-wrap">
+        <img *ngIf="userData?.UserProfilePic" [src]="userData?.UserProfilePic" class="user-image" />
+        <img *ngIf="!userData?.UserProfilePic" src="assets/images/profile-img1.jpg" class="user-image" />
+        <ion-icon (click)="askImageSource()" name="md-add-circle" class="add-img-icon"></ion-icon>
+    </div>
+
+    <h6 class="ion-text-capitalize">Welcome to Charactify {{userData?.FirstName}}!</h6>
+
+
+    <ion-item lines="none">
+        <ion-checkbox slot="start" [(ngModel)]="tncAccepted" color="primary"></ion-checkbox>
+        <ion-label>
+            <p><strong> I agree to the Terms and Conditions.</strong></p>
+        </ion-label>
+    </ion-item>
+
+
+    <div class="tnc-content" text-left>
+        <!-- <p style="font-size: 11px;"><strong>Terms and Conditions</strong></p>
+        <strong> Welcome to Website Name!</strong>
+        <p>These terms and conditions outline the rules and regulations for the use of Company Name's Website, located at Website.com.</p>
+        <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Website Name if you do not agree to take all of the terms and conditions stated on this page.</p>
+        <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company's terms and conditions.
+            “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the
+            process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherland.
+            Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p> -->
+
+            <iframe src="https://charactify.com/terms-and-conditions/" width="100%" height="100%"></iframe>
+    </div>
+
+    <ion-button size="large" class="theme-button" (click)="navigateToSelfRating()" [disabled]="!tncAccepted">
+        Let's Charactify
+    </ion-button>
+</ion-content>

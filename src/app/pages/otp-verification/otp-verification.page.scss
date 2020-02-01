@@ -1,0 +1,31 @@
+.otp-verification-page {
+    --background: #ffffff;
+    --padding-start: 30px;
+    --padding-end: 30px;
+    p {
+        font-size: 14px;
+        text-align: center;
+        margin: 30px 0;
+    }
+    .no-captalize{
+        text-transform: inherit;
+    }
+    .forgot-btn {
+        font-size: 15px;
+        --ion-color-base: #666666 !important;
+        font-weight: 600;
+    }
+}
+
+.otp {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+    outline: none;
+    height: 30px;
+    font-size: 16px;
+    border-width: 0px;
+    border: none;
+    border-bottom: 2px solid #666666;
+    background: transparent;
+}

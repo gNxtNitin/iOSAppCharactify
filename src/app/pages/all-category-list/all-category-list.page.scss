@@ -1,0 +1,25 @@
+.all-category-list {
+    ion-avatar {
+        width: 65px;
+        height: 65px;
+    }
+    .score-label {
+        position: absolute;
+        top: 26px;
+        right: 22px;
+        font-size: 14px;
+    }
+}
+.all-category-list.ios .score-label {
+    top: 24px;
+}
+
+.all-category-list-header ion-toolbar {    
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+}
+
+.all-category-list-header.header-md::after,
+.all-category-list-header.header-ios::after {
+    display: block;
+}

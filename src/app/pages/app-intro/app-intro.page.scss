@@ -1,0 +1,71 @@
+.tutorial-page {
+    --background: linear-gradient(0deg, #ffffff 53%, #9d9998 50%);
+    height: 100vh;
+     
+}
+.tutorial-page.ios ion-slide {
+    height: calc(100vh - 90px) !important;
+    flex-direction: column;
+}
+
+ion-slide {
+    height: calc(100vh - 10px);
+    flex-direction: column;
+}
+
+.slide2-txt {
+    font-size: 16px;
+    padding: 1px 15px 15px 15px;
+    margin: 20px;
+}
+
+.slide-3-img {
+    margin-bottom: 15%;
+}
+
+.welcome-title {
+    margin: -16px 20px 12px 20px;
+    font-size: 21px;
+}
+
+img {    
+    margin: 0 auto;
+}
+
+.turorial-text {
+    color: rgb(241, 241, 241);
+    font-size: 16px;
+    padding: 1px 15px 15px 15px;
+    line-height: 20px;
+}
+
+.step-one {
+    color: var(--ion-color-primary-contrast);
+}
+
+.step-two {
+    color: var(--ion-color-success-contrast);
+}
+
+.step-three {
+    color: var(--ion-color-dark-contrast);
+}
+
+.continue-btn {
+    width: 115px;
+    margin: 0 auto;
+    height: 38px;
+    font-size: 16px;
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    right: 0;
+}
+
+.yes-btn {
+    --background: #963d3b;
+}
+
+.no-btn {
+    --background: #666666;
+}

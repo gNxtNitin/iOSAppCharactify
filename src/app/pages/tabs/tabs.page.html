@@ -1,0 +1,30 @@
+<ion-tabs>
+        <div id="initilizer"></div>
+
+    <ion-tab-bar slot="bottom" style="height:45px">
+            <p id="search" (click)="showPopOver($event, 'search')" class="walk-through-selector"></p>
+        <ion-tab-button tab="feed">            
+            <fa name="home" class="tab-icons"></fa>
+        </ion-tab-button>
+        
+        <ion-tab-button tab="search">            
+            
+            <fa name="search" class="tab-icons"></fa>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="goToNewGallery()">
+            <ion-icon name="add-circle-outline" style="font-size: 2.5em;"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="home">            
+            <ion-icon name="podium" style="font-size: 2.5em;"></ion-icon>            
+        </ion-tab-button>
+
+        <ion-tab-button tab="notifications">            
+            <ion-badge color="primary" style="background: #fb6c6c;" *ngIf="showNotificationBadge"></ion-badge>            
+            <p (click)="hideNotificationBuble()" style="width: 23px; position: absolute; height: 25px; top: 0px;"></p>
+            <fa name="bell-o" class="tab-icons"></fa>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+</ion-tabs>

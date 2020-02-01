@@ -1,0 +1,38 @@
+<ion-header transparent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding class="signup-options-page" fullscreen>
+    <ion-img src="assets/images/charactify-logo.png"></ion-img>
+    <app-error-handler #errorHandler></app-error-handler>
+    <div text-center>
+        <ion-button type="button" size="large" expand="block" class="gmail-button" (click)="signUpUsingGoogle()">
+            <!-- <ion-icon class="btn-left-icon" slot="start" name="logo-google"></ion-icon> -->
+
+            <ion-avatar slot="start" class="btn-left-icon">
+                <img src="assets/images/google-icon.png">
+            </ion-avatar>
+            <div class="gmail-divider"></div>
+            <div class="btn-text">Connect with Google</div>
+        </ion-button>
+        <ion-button type="button" size="large" expand="block" class="facebook-button" (click)="signUpUsingFacebook()">
+            <ion-avatar slot="start" class="btn-left-icon">
+                <img src="assets/images/fb.png">
+            </ion-avatar>
+            <div class="gmail-divider"></div>
+            <div class="btn-text">Connect with Facebook</div>
+        </ion-button>
+        <ion-button type="button" size="large" expand="block" class="email-button" (click)="goToSignUp()">
+            <ion-icon class="btn-left-icon" slot="start" name="mail"></ion-icon>
+            <div class="gmail-divider"></div>
+            <div class="btn-text">Connect with E-mail</div>
+        </ion-button>
+    </div>
+
+    <div class="dis-flex">        
+        <ion-button text-center type="button" fill="clear" size="small" color="dark" class="signin-button">Already have an account? <span class="text-under-line" (click)="goToSignIn()"> Sign In</span></ion-button>
+    </div>
+</ion-content>

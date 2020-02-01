@@ -1,0 +1,168 @@
+<ion-header class="search-page-header">
+    <ion-toolbar>
+        <ion-title text-left slot="secondary">
+            <img alt="logo" height="40" src="assets/images/header-logo.png" (click)="navigateToHome()">
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="primary" (click)="showPopOver($event)">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-searchbar *ngIf="!showInitialPopUp" (ionChange)="emailSearchChange()"
+        placeholder="Find friends by name or e-mail" [(ngModel)]="emailQuery" mode="ios">
+    </ion-searchbar>
+</ion-header>
+
+<ion-content class="search-page" (ionScrollEnd)="loadData('d')">
+    <app-error-handler #errorHandler></app-error-handler>
+    <div id="initilizer"></div>
+    <ion-grid *ngIf="showInitialPopUp" padding>
+        <ion-row>
+            <ion-col>
+                <ion-img src="assets/images/charactify-logo.png"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <h3> See who else you know on <br>
+                    Charactify
+                </h3>
+            </ion-col>
+        </ion-row>
+        <br><br><br>
+        <ion-row>
+            <ion-col text-center>
+                We'll periodically import and store your contacts to suggest connections and show you relevant updates.
+                You control who you can connect to on Charactify network.
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-button size="large" expand="block" class="custom-button" (click)="getPhoneContact()">
+                    Sync
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div *ngIf="!showInitialPopUp">
+    <!-- <div *ngIf="showInitialPopUp"> -->
+        <ion-fab id="searchFabButton" style="position: fixed; bottom: 70px;" *ngIf="!isMultiSelect" horizontal="end" vertical="bottom"
+            (click)="showBackDrop=!showBackDrop">
+            <br>
+            <ion-fab-button>
+                <ion-icon name="albums"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-list side="top">
+                <ion-fab-button color="light" data-desc="Pick Multiple"
+                    (click)="isMultiSelect=!isMultiSelect; showBackDrop = false">
+                    <ion-icon name="remove"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="light" data-desc="Select All" (click)="selectAllInvite();showBackDrop = false">
+                    <ion-icon name="reorder"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="light" data-desc="Sync" (click)="getPhoneContact();">
+                    <ion-icon name="sync"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="light" data-desc="Invite" (click)="startSocialShare('item')">
+                    <ion-icon name="share"></ion-icon>
+                </ion-fab-button>
+            </ion-fab-list>
+        </ion-fab>
+        <div *ngIf="showBackDrop" class="fab-back-drops">
+            <div class="backdroptitle">
+                <h3>Add Connections</h3>
+            </div>
+        </div>
+    </div>
+
+    <ion-grid *ngIf="emailList.length==0 && !showInitialPopUp">
+        <ion-row>
+            <ion-col text-center>
+                <br><br><br><br>
+                <p>No E-mail contact find.</p>
+                <h3>Click to invite friends using other means.</h3><br><br>
+                <ion-button (click)="startSocialShare('item')" class="send-request-btn" size="small" shape="round"
+                    color="medium">Invite
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div *ngIf="emailList.length!=0">
+        <ion-list lines="none" [hidden]="emailQuery">
+            <ion-item *ngFor="let item of emailList">                
+                <ion-thumbnail slot="start">
+                    <ion-img [src]="item.profilePic ? item.profilePic : 'assets/images/default-avatar.png'">
+                    </ion-img>
+                </ion-thumbnail>
+                <ion-label class="text-bold">
+                    <h4 class="text-bold">{{item.name}}</h4>
+                    <p>{{item.email}}</p>
+                </ion-label>                
+                <ion-checkbox slot="end" [(ngModel)]="item.isChecked" *ngIf="isMultiSelect && !item.UserID"
+                    (ionChange)="emailItemSelected(item)"></ion-checkbox>
+                <div *ngIf="!isMultiSelect">
+                    <ion-button [disabled]="item.sentStatus" *ngIf="item.UserID" class="send-request-btn" size="small"
+                        shape="round" color="primary" (click)="requestForAdd(item)">Add
+                    </ion-button>
+                    <ion-button [disabled]="item.sentStatus" *ngIf="!item.UserID" class="send-request-btn" size="small"
+                        shape="round" color="medium" (click)="requestForInvite(item)">Invite
+                    </ion-button>
+                    <ion-button *ngIf="item.UserID" shape="round" class="send-request-btn" size="small" color="medium"
+                        (click)="sendContactMsg(item)">
+                        <img src="assets/images/chat-icon.png" style="width: 25px;">
+                    </ion-button>
+                </div>
+
+            </ion-item>
+        </ion-list>
+        <ion-list lines="none" [hidden]="!emailQuery">
+            <ion-item *ngFor="let item of searchFindList">                
+                <ion-thumbnail slot="start">
+                    <ion-img [src]="item.profilePic ? item.profilePic : 'assets/images/default-avatar.png'">
+                    </ion-img>
+                </ion-thumbnail>
+                <ion-label class="text-bold">
+                    <h4 class="text-bold">{{item.name}}</h4>
+                    <p>{{item.email}}</p>
+                </ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="item.isChecked" *ngIf="isMultiSelect && !item.UserID"
+                    (ionChange)="emailItemSelected(item)"></ion-checkbox>
+                <div *ngIf="!isMultiSelect">
+                    <ion-button [disabled]="item.sentStatus" *ngIf="item.UserID" class="send-request-btn" size="small"
+                        shape="round" color="primary" (click)="requestForAdd(item)">Add
+                    </ion-button>
+                    <ion-button [disabled]="item.sentStatus" *ngIf="!item.UserID" class="send-request-btn" size="small"
+                        shape="round" color="medium" (click)="requestForInvite(item)">Invite
+                    </ion-button>
+                    <ion-button *ngIf="item.UserID" shape="round" class="send-request-btn" size="small" color="medium"
+                        (click)="sendContactMsg(item)">
+                        <img src="assets/images/chat-icon.png" style="width: 25px;">
+                    </ion-button>
+                </div>
+
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+</ion-content>
+
+<ion-footer *ngIf="isMultiSelect">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="multiSelectCloseClicked()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Send Invite</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="primary" [disabled]="!multiSelectItems.length" (click)="sentMultiSelectInvite()">
+                <ion-icon slot="icon-only" name="send"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

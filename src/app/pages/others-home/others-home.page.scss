@@ -1,0 +1,207 @@
+.others-home-page.ios .user-score {
+  font-size: 9px !important;
+    padding-top: 10px !important;
+}
+.others-home-page {
+  --background: #ffffff;
+  text-align: center;
+  .user-avatar {
+    margin: 0 auto;
+    width: 75px;
+    height: 75px;
+  }
+  .graphClickProtractor{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .user-name {
+    font-weight: 700;
+    font-size: 13px;
+    padding: 5px 5px;
+    text-align: center;
+  }
+  .top-traits-label{
+    bottom: 37%;
+  }
+  .edit-profile-btn {
+    --background: #ffffff;
+    --border-radius: 4px;
+    min-width: 180px;
+    text-transform: capitalize;
+    margin: 2%;
+    height: 29px;
+    font-size: 12px;
+    color: #474747;
+    font-weight: 600;
+    border: 1px solid #acacac;
+    border-radius: 4px;
+    margin-top: 0px;
+    --box-shadow: unset;
+    --color-activated: #474747;
+  }
+  p {
+    font-size: 13px;
+    color: #444444;
+    text-transform: capitalize;
+  }
+  .total-score {
+    font-size: 16px;
+    line-height: 0px;
+    font-weight: 700;
+  }
+  h6 {
+    margin: 15px 0;
+  }
+  ion-item {
+    --background: #fefefe;    
+    --inner-padding-bottom: 0px;
+    ion-label {
+      margin-bottom: 0px;
+    }
+    ion-label p {
+      font-size: 11px;
+      font-weight: 800;
+      color: #5d5d5d;
+      text-transform: capitalize;
+    }
+  }
+  .rating-box {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 10px solid #c2bfc2;
+    padding-top: 28px;
+    font-size: 37px;
+    font-weight: bold;
+    color: #be2e55 !important;
+    margin-top: 30px;
+  }
+  .text-bold {
+    font-weight: 500;
+  }
+  .text-right {
+    text-align: right;
+    padding-right: 30px;
+  }
+  .scroll-wrapper {
+    margin-top: 10px;    
+    width: 100%;
+    white-space: nowrap;    
+    text-align: center;
+  }
+  .scroll-item {
+    display: inline-block;
+    text-align: center;    
+    position: relative;
+  }
+  .trait-item {
+    display: inline-block;
+    text-align: center;
+    margin: 0 20px;;
+  }
+  .rating-count {
+    height: 60px;
+    width: 80px;
+    border: 3px solid #949089;
+    border-radius: 50%;
+    padding-top: 21px;
+    color: #be2e55;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .top-user {
+    border-radius: 100%;
+    font-weight: bold;
+    position: relative;
+    ion-avatar {
+      height: 75px;
+      width: 75px;
+      margin: 0 3px;
+      img{
+        height: 75px;
+        width: 75px;
+      }
+    }
+    .user-score {
+      font-size: 11px;
+      position: absolute;
+      right: -15px;
+      bottom: 1%;
+      border-radius: 84%;
+      width: 31px;
+      height: 33px;
+      color: #8a1511;
+      padding-top: 11.5%;
+      font-weight: 700;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url(/assets/images/round-trait-circle/big-circle.png)
+    }
+  }
+  .rating-lable {
+    font-size: 10px;
+    margin: 5px 0;
+    font-weight: bold;    
+    text-transform: capitalize;
+  }
+  .traits-img {
+    height: 75px;
+    width: 75px;
+    margin: 5px 10px;
+  }
+  ion-segment {
+    background: #ffffff !important;
+  }
+  .segment-button-checked {
+    background: #ffffff !important;
+    color: #3e3e3e !important;
+    --color-checked: #515151;
+  }
+  .ios.segment-button-checked {
+    border-bottom: 2px solid #515151;
+  }
+  ion-segment-button {
+    --border-radius: 0px;
+    --border-style: solid;
+    --border-width: 2px;
+    --transition: 100ms all linear;
+    --padding-top: 0;
+    --padding-end: 0px;
+    --padding-bottom: 0;
+    --padding-start: 0px;
+    --transition: color 0.15s linear 0s, opacity 0.15s linear 0s;
+    min-width: 75px;
+    max-width: 360px;
+    min-height: 30px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 40px;
+    text-transform: initial;
+    border: none;
+    color: #4f4b60;
+  }
+}
+
+.others-home-header ion-toolbar {  
+  --ion-color-base: #c2bfc2 !important;
+  --border-color: #c2bfc2;
+  ion-title {
+    -webkit-padding-start: 7px;
+    padding-inline-start: 7px;
+    order: 0;
+    padding-top: 3px;
+    img {
+      height: 35px;
+    }
+  }
+}
+
+.others-home-header.header-md::after,
+.others-home-header.header-ios::after {
+  display: block;
+}

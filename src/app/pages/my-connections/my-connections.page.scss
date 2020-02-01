@@ -1,0 +1,43 @@
+.my-connection-page {
+  .send-request-btn {    
+    --background: #933734;
+    font-size: 13px;
+    text-transform: capitalize;
+    width: 75px;
+  }
+  .friendship-icon{
+    height: 62px;
+    width: 62px;
+  }
+  .custom-card {
+    margin-top: 6px;
+    margin-bottom: 8px;
+    padding-top: 6px;   
+    ion-card-content {
+        padding-top: 10px;
+        padding-bottom: 5px;
+        -webkit-padding-start: 2px;
+        padding-inline-start: 2px;
+        -webkit-padding-end: 0px;
+        padding-inline-end: 0px;
+      p {
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
+  ion-avatar {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.my-connection-header ion-toolbar {  
+  --ion-color-base: #c2bfc2 !important;
+  --border-color: #c2bfc2;
+}
+
+.my-connection-header.header-md::after,
+.my-connection-header.header-ios::after {
+  display: block;
+}

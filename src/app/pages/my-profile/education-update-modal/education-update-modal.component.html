@@ -1,0 +1,145 @@
+<ion-header class="education-update-modal-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="close()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title *ngIf="objectFromParent.selectedComponent == 'EDUCATION'"> Add/Update Education Details</ion-title>
+        <ion-title *ngIf="objectFromParent.selectedComponent == 'WORK'"> Add/Update Work Details</ion-title>
+        <ion-title *ngIf="objectFromParent.selectedComponent == 'PROFILE'"> Update Bio Details</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="profile-updateModal">
+    <app-error-handler #errorHandler></app-error-handler>
+    <form [formGroup]="educationProfileUpdateForm" (ngSubmit)="onProfileSubmit($event)" *ngIf="objectFromParent.selectedComponent == 'EDUCATION'">
+        <ion-item>
+            <ion-label position="floating">College/School Name</ion-label>
+            <ion-input formControlName="SchoolName"></ion-input>
+            <ion-icon name="school" slot="end" color="primary"></ion-icon>
+        </ion-item>        
+        <ion-item>
+            <ion-label position="floating">From Date</ion-label>
+            <ion-datetime formControlName="Fromdate" displayFormat="YYYY" pickerFormat="YYYY">
+            </ion-datetime>
+            <ion-icon name="calendar" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">To Date</ion-label>
+            <ion-datetime formControlName="Todate" displayFormat="YYYY" pickerFormat="YYYY" [min]="educationProfileUpdateForm.controls['Fromdate'].value">
+            </ion-datetime>
+            <ion-icon name="calendar" slot="end" color="primary"></ion-icon>
+        </ion-item>        
+        <br>
+        <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea formControlName="Description" placeholder="Information like 10th/Graduation etc..."></ion-textarea>
+        </ion-item>
+        <br>
+        <ion-item [hidden]="true">
+            <ion-icon name="unlock" slot="start" color="primary"></ion-icon>
+            <ion-label>Is public</ion-label>
+            <ion-checkbox slot="end" formControlName="Ispublic"></ion-checkbox>
+        </ion-item>
+        <ion-button type="submit" size="large" expand="block" class="custom-button submit-btn" [disabled]="!educationProfileUpdateForm.valid">
+            Submit
+        </ion-button>
+    </form>
+
+    <form [formGroup]="workProfileUpdateForm" (ngSubmit)="onProfileSubmit($event)" *ngIf="objectFromParent.selectedComponent == 'WORK'">
+        <ion-item>
+            <ion-label position="floating">Company Name</ion-label>
+            <ion-input formControlName="Companyname"></ion-input>
+            <ion-icon name="briefcase" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Position</ion-label>
+            <ion-input formControlName="Position"></ion-input>
+            <ion-icon name="person" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input formControlName="Address"></ion-input>
+            <ion-icon name="pin" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">From Date</ion-label>
+            <ion-datetime formControlName="Fromdate" displayFormat="YYYY" pickerFormat="YYYY">
+            </ion-datetime>
+            <ion-icon name="calendar" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">To Date</ion-label>
+            <ion-datetime formControlName="Todate" displayFormat="YYYY" pickerFormat="YYYY" [min]="workProfileUpdateForm.controls['Fromdate'].value">
+            </ion-datetime>
+            <ion-icon name="calendar" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item [hidden]="true">
+            <ion-icon name="unlock" slot="start" color="primary"></ion-icon>
+            <ion-label>Currently working</ion-label>
+            <ion-checkbox slot="end" formControlName="Isstillworking"></ion-checkbox>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea formControlName="Description" placeholder="Enter more information here..."></ion-textarea>
+        </ion-item>
+        <br>
+        <ion-item [hidden]="true">
+            <ion-icon name="unlock" slot="start" color="primary"></ion-icon>
+            <ion-label>Is public</ion-label>
+            <ion-checkbox slot="end" formControlName="Ispublic"></ion-checkbox>
+        </ion-item>
+        <ion-button type="submit" size="large" expand="block" class="custom-button submit-btn" [disabled]="!workProfileUpdateForm.valid">
+            Submit
+        </ion-button>
+    </form>
+
+    <form [formGroup]="ProfileUpdateForm" (ngSubmit)="onProfileSubmit($event)" *ngIf="objectFromParent.selectedComponent == 'PROFILE'">
+        <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input formControlName="firstName" type="text"></ion-input>
+            <ion-icon name="user" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input formControlName="lastName" type="text"></ion-input>
+            <ion-icon name="user" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">DOB</ion-label>
+            <ion-datetime max="2001-02" formControlName="dateOfBirth" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY">
+            </ion-datetime>
+            <ion-icon name="calendar" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label>Gender</ion-label>
+            <ion-select formControlName="gender" interface="popover">
+                <ion-select-option [value]="'Male'">Male
+                </ion-select-option>
+                <ion-select-option [value]="'Female'">Female
+                </ion-select-option>
+            </ion-select>
+            <ion-icon name="man" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Mobile</ion-label>
+            <ion-input formControlName="phone" type="tel" maxlength="10" pattern="[0-9]*"></ion-input>
+            <ion-icon name="phone-portrait" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">City</ion-label>
+            <ion-input formControlName="city" type="text"></ion-input>
+            <ion-icon name="pin" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input formControlName="AppUserName" type="text"></ion-input>
+            <ion-icon name="user" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-button type="submit" size="large" expand="block" class="custom-button submit-btn" [disabled]="!ProfileUpdateForm.valid">
+            Submit
+        </ion-button>
+    </form>
+
+</ion-content>

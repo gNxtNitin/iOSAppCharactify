@@ -1,0 +1,22 @@
+.image-viwer-modal {
+    --background: rgba(0, 0, 0, 0.78);
+    ion-slides {
+        margin-top: -10%;        
+        img {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+    ion-toolbar {
+        --background: rgba(0, 0, 0, 0.78);
+    }
+}
+
+.education-update-modal-header {
+    .modal-close {
+        color: white;
+    }
+    ion-title {
+        color: #fff;
+    }
+}

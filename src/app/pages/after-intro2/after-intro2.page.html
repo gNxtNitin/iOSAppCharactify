@@ -1,0 +1,23 @@
+<ion-content class="after-intro-page" text-center>
+    <div *ngIf="isExcited" class="content-wrap">
+        <div class="welcome-title">Good !</div>
+        <div class="turorial-text">
+            Let's get you charactified !
+        </div>
+        <ion-img data-src="assets/images/tutorial-img/tutorial-4.gif"></ion-img>
+    </div>
+
+    <div *ngIf="!isExcited" class="content-wrap">
+        <div class="turorial-text" style="margin: 50px 0 30px; line-height: 20px;">
+            No worries..... <br> You will be in next few seconds.
+            <br> Let's get you charactified !
+        </div>
+        <ion-img data-src="assets/images/tutorial-img/tutorial-4.gif"></ion-img>
+    </div>
+
+    <div style="text-align: center;">
+        <ion-button size="medium" size="small" class="custom-button continue-btn" (click)="finish()">
+            Continue
+        </ion-button>
+    </div>
+</ion-content>

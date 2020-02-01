@@ -1,0 +1,139 @@
+<ion-header class="score-summary-by-trait-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">            
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>
+            <small> <strong>{{paramData.scoreSummaryBy}}</strong></small>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="score-summary-by-trait-page">
+    <app-error-handler #errorHandler></app-error-handler>
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Score Summary - By User</p>
+        </ion-label>
+    </ion-item>
+    <br>
+    <div class="main-wrap">
+        <article>
+            <div class="shine">
+                <img src="assets/images/round-trait-circle/big-circle.png">                
+                <span>{{serverResponse.AverageScoreAllTrait ? serverResponse.AverageScoreAllTrait : 0 | number : '1.1-2'}}</span>
+            </div>
+            <div class="trait" (click)="naviagetToOtherHomePage(topCharactifierslst[0])">
+                <div class="image"><img
+                        [src]="topCharactifierslst[0].userpic ? topCharactifierslst[0].userpic : 'assets/images/default-avatar.png'"
+                        alt=""><span style="left: -15px;">{{topCharactifierslst[0].score | number : '1.1-2'}}</span>
+                </div>
+                <h3 class="ion-text-capitalize">{{topCharactifierslst[0].FirstName}}</h3>
+            </div>
+            <div class="trait second" (click)="naviagetToOtherHomePage(topCharactifierslst[1])">
+                <div class="image"><img
+                        [src]="topCharactifierslst[1].userpic ? topCharactifierslst[1].userpic : 'assets/images/default-avatar.png'"
+                        alt=""><span>{{topCharactifierslst[1].score | number : '1.1-2'}}</span></div>
+                <h3 class="ion-text-capitalize">{{topCharactifierslst[1].FirstName}}</h3>
+            </div>
+            <div class="trait third" (click)="naviagetToOtherHomePage(topCharactifierslst[2])">
+                <div class="image"><img
+                        [src]="topCharactifierslst[2].userpic ? topCharactifierslst[2].userpic : 'assets/images/default-avatar.png'"
+                        alt=""><span>{{topCharactifierslst[2].score | number : '1.1-2'}}</span></div>
+                <h3 class="ion-text-capitalize">{{topCharactifierslst[2].FirstName}}</h3>
+            </div>
+            <div class="trait fours" (click)="naviagetToOtherHomePage(topCharactifierslst[3])">
+                <div class="image"><img
+                        [src]="topCharactifierslst[3].userpic ? topCharactifierslst[3].userpic : 'assets/images/default-avatar.png'"
+                        alt=""><span>{{topCharactifierslst[3].score | number : '1.1-2'}}</span></div>
+                <h3 class="ion-text-capitalize">{{topCharactifierslst[3].FirstName}}</h3>
+            </div>
+            <div class="trait fives" (click)="naviagetToOtherHomePage(topCharactifierslst[4])">
+                <div class="image"><img
+                        [src]="topCharactifierslst[4].userpic ? topCharactifierslst[4].userpic : 'assets/images/default-avatar.png'"
+                        alt=""><span style="left: -15px;">{{topCharactifierslst[4].score | number : '1.1-2'}}</span>
+                </div>
+                <h3 class="ion-text-capitalize">{{topCharactifierslst[4].FirstName}}</h3>
+            </div>
+        </article>
+    </div>
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Score Summary - By Category</p>
+        </ion-label>
+    </ion-item>
+    <div class="scroll-wrapper">
+        <div class="scroll-item">
+            <div class="self">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/self.png">
+                    <aside>{{categoryObj.Self.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item">
+            <div class="family">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/family.png">
+                    <aside>{{categoryObj.Family.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item">
+            <div class="friends">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/friends.png">
+                    <aside>{{categoryObj.Friends.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item">
+            <div class="co-workers">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/co-worker.png">
+                    <aside>{{categoryObj.Co_workers.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item">
+            <div class="acquaintances">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/acuatances.png">
+                    <aside>{{categoryObj.Acquaintances.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Trait Score History</p>
+        </ion-label>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col text-center>
+                <ion-segment [(ngModel)]="selectedLineChartOption" (ionChange)="segmentChanged($event)" scrollable>
+                    <ion-segment-button value="threeMonthslst" checked>
+                        <ion-label>3 Months</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="sixMonthslst">
+                        <ion-label>6 Months</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="oneYearlst">
+                        <ion-label>1 Year</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="begnninglst">
+                        <ion-label>Beginning</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>            
+                <canvas #lineCanvas></canvas>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

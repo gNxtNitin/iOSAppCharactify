@@ -1,0 +1,140 @@
+.self-rating-page.ios .average-rating-text{
+    top:44px;
+}
+.self-rating-page.ios {
+    ion-col div {
+        padding-top: 5px;
+    }
+}
+.self-rating-page {
+    --background: #ffffff;
+    text-align: center;
+    ion-avatar {
+        height: 115px;
+        width: 115px;
+        margin: 0 auto;
+        // position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    .average-rating-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 48px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    h6 {
+        margin: 6px 0;
+    }
+    ion-item {
+        --background: #fefefe;
+    }
+    ion-thumbnail {
+        margin-top: -10px;
+    }
+    ion-row:first-child {
+        height: 40px;
+    }
+    ion-row {
+        height: 34px;
+    }
+    ion-col div {
+        height: 34px;
+        width: 34px;
+        border-radius: 50%;
+        text-align: center;
+        padding-top: 8px;
+        color: #cf1851;
+        font-size: 13px;
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    .custom-button {
+        margin: 0;
+    }
+    .rating-box {
+        height: 120px;
+        width: 120px;
+        margin: 0 auto;
+        font-size: 35px;
+        font-weight: bold;
+        margin-top: 10px;
+        position: relative;
+        color: #fff;
+        span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 41px;
+            color: #900a05;
+            font-size: 35px;
+        }
+    }
+    .rating-btn-wrap {
+        text-align: center;
+        margin: 15px 0 !important;
+    }
+    .categary-label {
+        font-size: 10px;
+        text-align: center;
+        margin-top: 2px;
+    }
+    .selected-box {
+        
+        color: white !important;
+    }
+    .traits-img {
+        height: 75px;
+        width: 75px;
+    }
+    .rating-card {
+        border-radius: 15px;
+        border: 2px solid #9b3e3e;
+        border-top-color: #900A05;
+        border-top-width: 8px;
+        border-left-color: #fff;
+        border-right-color: #fff;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.24), 0 0 7px rgba(0, 0, 0, 0.12);
+        margin: 5px;
+        padding: 0px;
+        margin-bottom: 12px;
+    }
+} 
+.rating-button {
+    border: 3px solid #41465c;
+    color: #41465c !important;
+}
+
+.rating-button.selected-box {
+    background: #41465c;
+    color: #ffffff;
+}
+
+.self-rating-header ion-toolbar {
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+    ion-title {
+        -webkit-padding-start: 7px;
+        padding-inline-start: 7px;
+        order: 0;
+        padding-top: 3px;
+        img {
+            height: 35px;
+        }
+    }
+}
+
+.self-rating-header.header-md::after,
+.self-rating-header.header-ios::after {
+    display: block;
+}

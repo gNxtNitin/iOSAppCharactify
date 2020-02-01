@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding class="login-page" fullscreen>
+    <ion-img src="assets/images/charactify-logo.png"></ion-img>
+    <div class="social-icon">
+        <ion-button type="button" shape="round" class="gmail-button" (click)="signInUsingGoogle()">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-avatar>
+                <img src="assets/images/google-icon.png">
+            </ion-avatar>
+        </ion-button>
+        <ion-button type="button" shape="round" class="facebook-button" (click)="signInUsingFacebook()">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-avatar>
+                <img src="assets/images/facebook-icon.png">
+            </ion-avatar>
+        </ion-button>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <p class="form-invalid" *ngIf="!loginForm.valid  && formSubmitted">Username and password required.</p>
+        <app-error-handler #errorHandler></app-error-handler>
+
+        <ion-input class="custom-input" placeholder="User Name" formControlName="username" style="z-index: 0">
+            <ion-icon name="person" class="input-icon"> </ion-icon>
+        </ion-input>
+        <p class="invalidMsg" *ngIf="!loginForm.controls.username.valid  && (loginForm.controls.username.dirty || formSubmitted)">Please enter your username.</p>
+        <ion-input clear-on-edit="false" class="custom-input" type="password" placeholder="Password" formControlName="password" style="z-index: 0">
+            <ion-icon name="lock" class="input-icon"> </ion-icon>
+        </ion-input>
+        <p class="invalidMsg" *ngIf="!loginForm.controls.password.valid  && (loginForm.controls.password.dirty || formSubmitted)">Please enter your password.</p>
+        <ion-button type="submit" size="large" expand="block" class="custom-button">
+            Login
+        </ion-button>
+    </form>
+
+    <ion-button expand="block" fill="clear" color="dark" class="forgot-btn" (click)="goToForgotPass()">
+        <span class="text-under-line">Forgot Password?</span>
+    </ion-button>
+</ion-content>

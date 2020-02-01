@@ -1,0 +1,13 @@
+.FAQ-page {
+  
+}
+
+.my-connection-header ion-toolbar {  
+  --ion-color-base: #c2bfc2 !important;
+  --border-color: #c2bfc2;
+}
+
+.my-connection-header.header-md::after,
+.my-connection-header.header-ios::after {
+  display: block;
+}

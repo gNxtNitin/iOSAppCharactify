@@ -1,0 +1,46 @@
+.gallery-header {
+    background: #fff;
+    .selected-image {
+      height: 240px;
+      width: 100%;
+      overflow: hidden;
+      background: white;
+      text-align: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      img {
+        max-height: 240px;
+      }
+      .multi-select-icon{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 15px;
+        font-size: 22px;
+        background: #1f1f1fd1;
+        padding: 12px;
+        color: #909090;
+        border-radius: 30px;
+      }
+      .multiSelect{
+        color: #e6e6e6;
+      }    
+    }
+    ion-button.button-clear{
+      --background: unset;
+    }
+    ion-toolbar {      
+      --ion-color-base: #c2bfc2 !important;
+      --border-color: #c2bfc2;
+    }
+  }
+  .gallery-header.header-md::after,
+  .gallery-header.header-ios::after {
+    display: block;
+  }
+
+  .item-img {
+    min-height: 100px;
+    max-height: 100px;
+    width: 100%;
+  }

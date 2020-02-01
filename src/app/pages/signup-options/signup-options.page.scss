@@ -1,0 +1,83 @@
+.signup-options-page {
+    --background: #ffffff;
+    --padding-start: 20px;
+    --padding-end: 20px;
+}
+
+.gmail-button {
+    --background: #963d3b;
+    margin-bottom: 3%;
+    margin-top: 30%;
+    color: white;
+    .btn-left-icon {        
+        border-bottom-right-radius: unset;
+        border-top-right-radius: unset;
+    }
+}
+
+.facebook-button {
+    --background: #3a589b;
+    margin-bottom: 3%;
+    .btn-left-icon {        
+        border-bottom-right-radius: unset;
+        border-top-right-radius: unset;
+    }
+}
+
+.email-button {
+    --background: #979593;
+    margin-bottom: 3%;
+    .btn-left-icon {        
+        border-bottom-right-radius: unset;
+        border-top-right-radius: unset;
+        left: 30px;
+        position: absolute;
+        padding-right: 0px;
+        height: 40px;
+        font-size: 3rem;
+    }
+}
+
+.gmail-button,
+.facebook-button,
+.email-button {
+    --border-radius: 40px;
+    text-transform: initial !important;
+    font-size: 1rem;
+    height: 60px;
+}
+
+.dis-flex {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.signin-button {
+    text-transform: initial;
+    font-weight: 600;
+    font-size: 15px;
+    --ion-color-base: #656565 !important;
+}
+
+.btn-left-icon {
+    left: 15px;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+}
+
+.btn-text {
+    position: absolute;
+    left: 80px;
+}
+.gmail-divider{
+    background: white;
+    width: 1px;
+    height: 40px;    
+    position: absolute;
+    left: 65px;
+}

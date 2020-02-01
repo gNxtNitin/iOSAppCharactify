@@ -1,0 +1,16 @@
+.login-options-page {
+    --background: #ffffff;
+    ion-img {
+        margin-top: 10%;
+    }
+}
+
+.login-button {    
+    margin-bottom: 5%;
+    margin-top: 60%;
+}
+
+.signup-button,
+.login-button {
+    --border-radius: 40px;
+}

@@ -1,0 +1,47 @@
+.view-comment-list {
+  .comment-list {
+    //margin-bottom: -10px;
+  }
+  .comment-txt {
+    p {
+      white-space: unset;
+    }
+    a {
+      text-transform: capitalize;
+      font-weight: bold;
+      font-size: 14px;
+      color: #595959;
+    }
+    padding: 3px 5px 3px 15px;
+    border-radius: 7px;
+    text-overflow: unset;
+    white-space: pre-line;
+  }
+
+}
+
+.comment-header ion-toolbar {
+  --background: white;
+  --ion-color-base: #c2bfc2 !important;
+  --border-color: #c2bfc2;
+  ion-title {
+      -webkit-padding-start: 7px;
+      padding-inline-start: 7px;
+      order: 0;
+      font-size: 1.1rem;
+  }
+}
+
+.comment-header.header-md::after,
+.comment-header.header-ios::after {
+  display: block;
+}
+.comment-footer ion-toolbar {
+  .divider {
+    height: 1px;
+    background: #e4e4e4;
+    margin: 0px 10px;
+  }
+}
+
+

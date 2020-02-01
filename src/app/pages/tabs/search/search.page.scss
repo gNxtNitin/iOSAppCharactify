@@ -1,0 +1,109 @@
+.search-page {
+  --background: #ffffff;
+  ion-slide {
+    display: block;
+  }
+
+  .backdroptitle {
+    text-align: center;
+    margin: 45% 0;
+    h3 {
+      color: white;
+      font-weight: bold;
+      font-size: 1.7rem;
+    }
+  }
+
+  .fab-back-drops {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.85);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  ion-item {
+    --background: #fefefe;
+    margin: 5px 0;
+  }
+  .recommendation-msg {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 15px;
+    margin-top: 30px;
+    color: #1f8fc6;
+  }
+  .send-request-btn {
+    min-width: 58px;
+  }
+  ion-thumbnail {
+    height: 50px;
+    width: 50px;
+    --border-radius: 100%;
+  }
+}
+
+.search-page-header {
+  ion-segment {
+    background: #ffffff !important;
+  }
+  .segment-button-checked {
+    background: #ffffff !important;
+  }
+  .ios.segment-button-checked {
+    border-bottom: 1px solid #963d3b;
+  }
+  ion-segment-button {
+    --border-radius: 0px;
+    --border-style: solid;
+    --border-width: 2px;
+    --transition: 100ms all linear;
+    --padding-top: 0;
+    --padding-end: 16px;
+    --padding-bottom: 0;
+    --padding-start: 16px;
+    --transition: color 0.15s linear 0s, opacity 0.15s linear 0s;
+    min-width: 90px;
+    max-width: 360px;
+    min-height: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 40px;
+    text-transform: initial;
+    border: none;
+    color: #6d6d6d;
+  }
+}
+
+.search-page-header ion-toolbar {
+  --ion-color-base: #c2bfc2 !important;
+  --border-color: #c2bfc2;
+}
+
+.search-page-header.header-md::after,
+.search-page-header.header-ios::after {
+  display: block;
+}
+
+.search-page-header ion-toolbar {
+  --ion-color-base: #c2bfc2 !important;
+  --border-color: #c2bfc2;
+  box-shadow: 1px 1px 7px #ddd;
+  margin-bottom: 5px;
+  ion-title {
+    -webkit-padding-start: 7px;
+    padding-inline-start: 7px;
+    order: 0;
+    padding-top: 3px;
+    img {
+      height: 35px;
+    }
+}
+}
+
+.ios ion-fab {
+    bottom: 80px !important;
+}

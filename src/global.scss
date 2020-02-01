@@ -1,0 +1,77 @@
+// http://ionicframework.com/docs/theming/
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "./libs/zuck/zuck.scss";
+@import "./theme/filters.css";
+@import "./theme/ratings-circle.css";
+@import "./theme/ratings-circle-for-summary.css";
+@import "./../node_modules/font-awesome/css/font-awesome.css";
+// @import './libs/cropper/cropper.scss';
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  --border-color: transparent;
+}
+.tab-icons {
+  font-size: 2em;
+}
+
+.header-md::after,
+.header-ios::after {
+  display: none;
+}
+.invalidMsg {
+  font-size: 14px;
+  color: red;
+  padding-left: 22px;
+  margin: 5px;
+}
+
+.form-invalid {
+  font-size: 14px;
+  color: red;
+  margin: 5px;
+  text-align: center;
+}
+
+.header-md ion-title {
+  -webkit-padding-start: 5px;
+  padding-inline-start: 5px;
+  font-size: 16px;
+}
+
+.ios .segment-button-checked {
+  background: #963d3b !important;
+}
+
+.ios .custom-input {
+  --padding-start:53px !important;
+}
+
+.ios .input-icon {
+   position: absolute;
+}
+
+.wrapper .otp-input {
+  width:40px !important;
+}
+
+.alert-button.sc-ion-alert-ios:last-child {
+  font-weight: normal !important;
+}
+
+.walkThrough .popover-arrow.sc-ion-popover-ios {
+ // top: calc(100vh - 55px) !important;
+}
+
+.walkThrough .popover-wrapper .popover-content {
+ // top: calc(100vh - 210px) !important;
+}

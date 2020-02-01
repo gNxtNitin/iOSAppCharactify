@@ -1,0 +1,34 @@
+.profile-crop-updateModal {
+    background: #fff;
+  
+    ion-toolbar {
+      --ion-color-base: #c2bfc2 !important;
+      --border-color: #c2bfc2;
+    }
+  }
+  .education-update-modal-header.header-md::after,
+  .education-update-modal-header.header-ios::after {
+    display: block;
+  }
+  .profile-updateModal{
+    ion-item{
+      margin: 10px;
+    }
+    .submit-btn{
+      min-width: unset;
+      width: 160px;
+      margin: 0 auto;
+      margin-top: 15px;
+      height: 45px;
+      margin-bottom: 15px;  
+    }
+
+
+  }
+
+  .cropImage {
+    img {
+        max-width: 100%;
+        /* This rule is very important, please do not ignore this! */
+    }
+}

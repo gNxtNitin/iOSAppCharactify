@@ -1,0 +1,218 @@
+<ion-header class="friendship-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">            
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>Friendship</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="friendship-page">
+    <app-error-handler #errorHandler></app-error-handler>
+    <div *ngIf="showResponse">
+        <div class="scroll-wrapper">
+            <div class="scroll-item">
+                <div class="friendship-user" (click)="naviagetToHomePage()">
+                    <img class="user-img" [src]="serverResponse.currentUser[0]?.UserProfilePic ? serverResponse.currentUser[0]?.UserProfilePic : 'assets/images/default-avatar.png'">
+                    <div class="score-wrap">
+                        <img src="assets/images/round-trait-circle/big-circle.png" class="score-img1">
+                        <div class="score-lable1">{{serverResponse.currentUser[0]?.currentOverAllAvgScore | number : '1.1-2'}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="friendship-user" (click)="naviagetToOtherRatingPage(serverResponse.friend[0])">
+                    <img class="user-img" [src]="serverResponse.friend[0]?.UserProfilePic ? serverResponse.friend[0]?.UserProfilePic : 'assets/images/default-avatar.png'" style="margin-left: -35%;">
+                    <div class="score-wrap">
+                        <img src="assets/images/round-trait-circle/big-circle.png" class="score-img2">
+                        <div class="score-lable2">{{serverResponse.friend[0]?.friendOverAllAvgScore | number : '1.1-2'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col text-center>
+                    <strong><span class="ion-text-capitalize">{{serverResponse.currentUser[0]?.FirstName | titlecase}} {{serverResponse.currentUser[0]?.LastName | titlecase}}</span> and
+                <span class="ion-text-capitalize">{{serverResponse.friend[0]?.FirstName | titlecase}} {{serverResponse.friend[0]?.LastName | titlecase}}</span></strong>
+                </ion-col>
+            </ion-row>
+            <ion-row text-center>
+                <ion-col>
+                    Connected since {{serverResponse.connectedSince[0]?.ConnectedDate | date :'longDate'}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-item lines="inset">
+            <ion-label>
+                <p *ngIf="serverResponse.currentUser[0]?.ScoreDate">Score given on {{serverResponse.currentUser[0]?.ScoreDate | date :'longDate'}}</p>
+                <p *ngIf="!serverResponse.currentUser[0]?.ScoreDate">Not Yet Charactified</p>
+            </ion-label>
+        </ion-item>
+
+        <div class="main">
+            <article>
+                <div class="shine">
+                    <img src="assets/images/round-trait-circle/big-circle.png">
+                    <span>{{serverResponse.currentUser[0]?.AvgScore ? serverResponse.currentUser[0]?.AvgScore : 0 | number : '1.1-2'}}</span>
+                </div>
+                <div class="honest">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/honest.png">
+                        <aside>{{scoreGiven.Honest.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+                <div class="honorable">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/confidence.png">
+                        <aside>{{scoreGiven.Honorable.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="respect">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/respectful.png">
+                        <aside>{{scoreGiven.Respectful.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="fair">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/fair.png">
+
+                        <aside>{{scoreGiven.Fair.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="forgiving">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/forgive.png">
+                        <aside>{{scoreGiven.Forgiving.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="generous">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/generous.png">
+                        <aside>{{scoreGiven.Generous.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+
+                <div class="courageous">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/courageous.png">
+                        <aside>{{scoreGiven.Courageous.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="polite">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/adaptability.png">
+                        <aside>{{scoreGiven.Polite.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="loving">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/compassion.png">
+                        <aside>{{scoreGiven.Loving.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="trustworthy">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/loyalty.png">
+                        <aside>{{scoreGiven.Trustworthy.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <ion-item lines="inset">
+            <ion-label>
+                <p *ngIf="serverResponse.friend[0]?.ScoreDate">Score received on {{serverResponse.friend[0]?.ScoreDate | date :'longDate'}}</p>
+                <p *ngIf="!serverResponse.friend[0]?.ScoreDate">Not Yet Charactified</p>
+            </ion-label>
+        </ion-item>
+        <div class="main">
+            <article>
+                <div class="shine">
+                    <img src="assets/images/round-trait-circle/big-circle.png">
+                    <span>{{serverResponse.friend[0]?.AvgScore ? serverResponse.friend[0].AvgScore : 0 | number : '1.1-2'}}</span>
+                </div>
+                <div class="honest">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/honest.png">
+                        <aside>{{scoreRecive.Honest.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+                <div class="honorable">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/confidence.png">
+                        <aside>{{scoreRecive.Honorable.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="respect">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/respectful.png">
+                        <aside>{{scoreRecive.Respectful.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="fair">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/fair.png">
+
+                        <aside>{{scoreRecive.Fair.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="forgiving">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/forgive.png">
+                        <aside>{{scoreRecive.Forgiving.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="generous">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/generous.png">
+                        <aside>{{scoreRecive.Generous.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+
+                <div class="courageous">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/courageous.png">
+                        <aside>{{scoreRecive.Courageous.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="polite">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/adaptability.png">
+                        <aside>{{scoreRecive.Polite.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="loving">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/compassion.png">
+                        <aside>{{scoreRecive.Loving.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+
+                <div class="trustworthy">
+                    <div class="estrellas inverso">
+                        <img src="assets/images/round-trait-circle/loyalty.png">
+                        <aside>{{scoreRecive.Trustworthy.score | number : '1.1-2'}}</aside>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</ion-content>

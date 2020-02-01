@@ -1,0 +1,199 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
+// and used throughout the application.
+
+ion-button {
+  --background: #be2e55;
+  text-transform: capitalize;
+}
+
+.text-under-line {
+  text-decoration: underline;
+  text-underline-position: under;
+  line-height: 2px;
+  padding-left: 3px;
+}
+
+.custom-button {
+  --background: #933734;
+  --border-radius: 40px;
+  text-transform: capitalize;
+  margin: 0 auto;
+  height: 3em;
+  font-size: 18px;
+  margin-top: 10%;
+}
+
+.theme-button {
+  --background: #933734 !important;
+  --border-radius: 40px;
+  min-width: 150px;
+}
+
+.custom-input {
+  --background: #e4e4e4;
+  --placeholder-color: #868686;
+  --color: #606060;
+  --padding-bottom: 20px;
+  --padding-top: 20px;
+  --padding-start: 15px;
+  --padding-start: 15px;
+  --padding-end: 10px;
+  --placeholder-opacity: 0.9;
+  border-radius: 40px;
+  font-size: 17px;
+  margin-top: 10px;
+  .input-icon {
+    font-size: 30px;
+    padding-left: 20px;
+    color: #7f7f7f;
+  }
+}
+
+.custom-user-img {
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  margin-top: 10%;
+  padding: 10px;
+}
+
+.header-label {
+  font-size: 18px;
+  margin: 10% 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.custom-reaction-popover .popover-content {
+  width: 80%;
+}
+.walkThrough {
+  ion-backdrop {
+    opacity: 0.6 !important;
+    background-color: black;
+  }
+  .popover-content {
+    width: 303px;
+  }
+  .walk-container {
+    h1 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+}
+
+.todo-msg {
+  text-align: center;
+  font-size: 15px;
+  margin: 30px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.message-pop input[type="text"] {
+  height: 56px;
+}
+
+.custom-loading {
+  background: #ffffffc7;
+  .loading-wrapper {
+    color: #963d3b !important;
+  }
+  ion-backdrop {
+    opacity: 0.5 !important;
+  }
+  ion-spinner {
+    color: #963d3b !important;
+  }
+}
+
+.custom-toast {
+  --background: #963d3b;
+  --color: white;
+}
+
+.custom-toast-error {
+  --background: #ff0804;
+  --color: white;
+  background: rgba(0, 0, 0, 0.7686274509803922);
+}
+
+.popover-wrapper .popover-content {
+  box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.custom-reaction-popover {
+  --width: unset;
+  --background: transparent !important;
+}
+
+ion-fab {
+  position: fixed !important;
+}
+
+ion-fab-button[data-desc] {
+  position: relative;
+}
+
+ion-fab-button {
+  --background: var(--ion-color-primary) !important;
+  font-size: 18px;
+  width: 60px;
+  height: 60px;
+  ion-icon{
+    font-size: 30px;
+  }
+}
+
+ion-fab-button[data-desc]::after {
+  position: absolute;
+  content: attr(data-desc);
+  z-index: 1;
+  right: 80px;
+  bottom: 10px;
+  background-color: var(--ion-color-primary);
+  padding: 14px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.custom-share-modal .modal-wrapper {
+  height: 75%;
+  bottom: 0;
+  position: absolute;
+}
+
+.custom-send-contact-msg-modal {
+  height: 40%;
+  bottom: 0;
+  position: absolute;
+}
+
+@media only screen and (min-width: 290px) {
+  ion-content {
+    zoom: 0.9 !important;
+  }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 200px) {
+  ion-content {
+    zoom: 0.75;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+}

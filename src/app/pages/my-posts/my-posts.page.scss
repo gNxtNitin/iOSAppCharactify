@@ -1,0 +1,274 @@
+.my-post-page {
+    --background: #ffffff;
+    text-align: center;
+    .wrapper {        
+        width: auto;
+        position: relative;
+    }
+    .playpause {        
+        background-repeat: no-repeat;
+        width: 50%;
+        height: 50%;
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        margin: auto;
+        background-size: contain;
+        background-position: center;
+    }
+    .card-comment-divider {
+        padding: 0 15px;
+    }
+    .tags {
+        color: #0a6bc1;
+        text-transform: capitalize;
+        font-size: 11px;
+    }
+    .overlay-more-img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #222;
+        opacity: 0.9;
+        p {
+            position: absolute;
+            top: 46%;
+            left: 35%;
+            font-weight: bold;
+            color: #b0aeae;
+            font-size: 15px;
+        }
+    }
+    .post-date {
+        font-size: 10px;
+        color: #848383;
+        font-weight: 600;
+    }
+    .comment-list {
+        margin-bottom: 3px;
+        ion-avatar {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        ion-label {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .card-action-btn {
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+    }
+    .comment-txt {
+        p {
+            white-space: unset;
+            font-size: 14px;
+            line-height: normal;
+        }
+        h3 {
+            text-transform: capitalize;
+            font-weight: 600;
+            color: #565656;
+            font-size: 12px;
+            line-height: 14px;
+        }
+        background: #ebedf0;
+        padding: 6px 12px 7px 12px;
+        border-radius: 15px;
+    }
+
+    .reaction-count {
+        margin-top: 3%;
+        margin-left: 4%;
+    }
+    .column {
+        float: left;
+        width: 13.33%;
+    }
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .user-img-wrap {
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        max-width: 90px;
+        width: 15vw;
+        height: 15vw;
+    }
+    .user-image {
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 3px solid #933734;
+        width: 15vw;
+        height: 15vw;
+    }
+    .add-img-icon {
+        font-size: 25px;
+        color: #933734;
+        margin: 5%;
+    }
+    .your-story-txt {
+        font-weight: 700;
+        font-size: 10px;
+        margin-top: 11px;
+    }
+    .card-content-custom {
+        padding: 2px 15px;
+        text-overflow: unset;
+        white-space: pre-line;
+    }
+
+    .scroll-wrapper {
+        overflow-x: auto;
+        width: 100%;
+        white-space: nowrap;
+        background: #b9bdbf;
+        color: #000000;
+        padding: 10px 0;
+    }
+    .scroll-item {
+        display: inline-block;
+        text-align: center;
+        width: 82px;
+        position: relative;
+    }
+    .friends-story-img {
+        height: 60px;
+        width: 60px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+    }
+    .friends-lable {
+        font-size: 9px;
+        margin: 5px 0;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .add-post-icon {
+        position: absolute;
+        right: -10px;
+        top: 53%;
+        font-size: 25px;
+        color: #933734;
+        background: white;
+        border-radius: 50%;
+    }
+    .user-lable {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+    .score-lable {
+        position: absolute;
+        left: 0;
+        right: 0px;
+        top: 17px;
+        bottom: 0;
+        text-align: center;
+        font-size: 15px;
+        margin: 0 auto;
+        color: var(--ion-color-primary);
+    }
+    .categary-label {
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .feed-rating-container {
+        text-align: center;
+        margin: 3px 0 !important;
+        .custom-row {
+            height: 65px;
+        }
+    }
+    .feed-rating-box {
+        height: 45px;
+        width: 45px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        ion-img {
+            height: 45px;
+            width: 45px;
+        }
+    }
+    ion-card {
+        --background: #fff;
+        border-radius: 0;
+        margin: 10px 10px;
+    }
+    .divider {
+        height: 1px;
+        background: #e4e4e4;
+        margin: 0px 10px;
+    }
+    .comment-footer {
+        ion-button {
+            font-size: 12px;
+            text-transform: initial;
+            font-weight: bold;
+        }
+    }
+    .text-right {
+        text-align: right;
+    }
+    .social-cards ion-col {
+        padding: 0;
+    }
+    .text-left {
+        text-align: left;
+    }
+    .img-wrap-usr2 {
+        position: absolute;
+        left: 25px;
+        top: 0;
+        height: 40px;
+        width: 40px;
+    }
+}
+.my-post-page.ios {
+    .img-wrap-usr2 {
+        height: 36px;
+        width: 36px;
+    }
+    .comment-list ion-label {
+        margin-top: 5px;
+    }
+}
+
+
+
+.feed-header.header-md::after,
+.feed-header.header-ios::after {
+    display: block;
+}
+
+.feed-header ion-toolbar {    
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+    ion-title {
+        -webkit-padding-start: 7px;
+        padding-inline-start: 7px;
+        order: 0;
+        padding-top: 3px;
+        img {
+            height: 35px;
+        }
+    }
+}

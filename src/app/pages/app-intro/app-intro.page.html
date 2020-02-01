@@ -1,0 +1,25 @@
+<ion-content class="tutorial-page">
+    <ion-slides pager="true" #slideWithNav (ionSlideNextStart)="test1()" (ionSlidePrevStart)="test2()" [options]="slideOptions">
+        <ion-slide class="step-one">
+            <img src="assets/images/tutorial-img/tutorial-1.jpg" />
+        </ion-slide>
+
+        <ion-slide class="step-one">
+            <img src="assets/images/tutorial-img/tutorial-2.jpg" />
+        </ion-slide>
+        <ion-slide class="step-one">
+            <img src="assets/images/tutorial-img/tutorial-3.jpg" />
+        </ion-slide>
+        <ion-slide class="step-one">
+            <img src="assets/images/tutorial-img/tutorial-4.jpg" />
+        </ion-slide>
+        <ion-slide class="step-one">
+            <img src="assets/images/tutorial-img/tutorial-5.jpg" />
+        </ion-slide>
+    </ion-slides>
+    <div style="text-align: center;" *ngIf="!hideContinueBtn">
+        <ion-button size="small" class="custom-button continue-btn" (click)="ContinueToNextSlide()">
+            Continue
+        </ion-button>
+    </div>
+</ion-content>

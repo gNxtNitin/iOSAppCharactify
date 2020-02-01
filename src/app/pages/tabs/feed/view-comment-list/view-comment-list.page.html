@@ -1,0 +1,46 @@
+<ion-header class="comment-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-icon slot="icon-only" name="arrow-back" (click)="close()"></ion-icon>      
+    </ion-buttons>
+    <ion-title>
+      People who commented
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="view-comment-list" fullscreen>  
+    <app-error-handler #errorHandler></app-error-handler>
+  <ion-list>
+    <ion-item *ngFor="let com of objectFromParent.selectedItem.usercommentLst" class="comment-list">
+      <ion-avatar slot="start" (click)="naviagetToOtherRatingPageFromComment(com)">
+        <img [src]="com.UserProfilePic ? com.UserProfilePic : 'assets/images/default-avatar.png'">
+      </ion-avatar>
+      <ion-label class="comment-txt">
+        <a (click)="naviagetToOtherRatingPageFromComment(com)">{{com.Name}}</a>        
+        <p>{{com.Description}}</p>        
+        <p><small>{{com.createdDate | feedtimeAgo}}</small></p>
+      </ion-label>
+      <ion-icon (click)="pressEvent(com)" name="more" slot="end" *ngIf="com.UserID == userData.UserID"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="comment-footer">
+    <ion-toolbar>
+        <ion-row no-padding>
+            <ion-col no-padding>
+                <div class="divider"></div>
+            </ion-col>
+        </ion-row>
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img [src]="userData.UserProfilePic ? userData.UserProfilePic : 'assets/images/default-avatar.png'">
+            </ion-avatar>
+            <ion-input placeholder="Write a comment..." [(ngModel)]="commentDec"></ion-input>
+            <ion-button slot="icon-only" (click)="addComment()" [disabled]="!commentDec"
+                slot="end">
+                <ion-icon name="send" mode="md"></ion-icon>
+            </ion-button>
+        </ion-item>
+    </ion-toolbar>
+  </ion-footer>

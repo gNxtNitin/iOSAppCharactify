@@ -1,0 +1,248 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>gallery</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content fullscreen no-padding>
+  <ion-slides pager="false" class="swiper-no-swiping">
+
+
+    <ion-slide>
+      <ion-card class="custom-card">
+        <ion-card-header translucent="true">
+            <ion-toolbar>
+                <ion-title>gallery</ion-title>
+              </ion-toolbar>
+        </ion-card-header>
+
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+
+        <ion-row class="cardfooter">
+          <ion-col>
+            <ion-segment [(ngModel)]="selectedOperation" (ionChange)="segmentChanged($event)">
+              <ion-segment-button layout="icon-start" value="gallery" (click)="getPhotosFromDevice()" checked>
+                <ion-label>Gallery</ion-label>
+              </ion-segment-button>
+              <ion-segment-button layout="icon-start" value="photo" (click)="openCamera()">
+                <ion-label>Photo</ion-label>
+              </ion-segment-button>
+              <ion-segment-button layout="icon-start" value="video" (click)="videoCamera()">
+                <ion-label>Video</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <h1>Slide 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 3</h1>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+
+
+.custom-card{
+    margin-left: unset;
+    margin-right: unset;
+    margin-top: unset;
+    margin-bottom: unset;
+    box-shadow:unset
+}
+
+
+
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
+@Component({
+  selector: 'app-gallery',
+  templateUrl: './gallery.page.html',
+  styleUrls: ['./gallery.page.scss'],
+})
+export class GalleryPage implements OnInit {
+
+  @ViewChild(IonSlides) slides: IonSlides;
+
+  selectedOperation:any = 'gallery';
+  constructor() { }
+
+  ngOnInit() {
+    this.slides.lockSwipes(true)
+  }
+
+  next(){
+    this.slides.lockSwipes(false)
+    this.slides.slideNext()
+    this.slides.lockSwipes(true)
+  }
+  
+  previous(){
+    this.slides.lockSwipes(false)
+    this.slides.slidePrev()
+    this.slides.lockSwipes(true)
+  }
+
+}
+
+
+
+
+
+
+Filter
+
+
+
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tab Three
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img [class]="selectedClass" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/mountaineering.jpg">
+
+  <div class="scroll-wrapper">
+    <div class="scroll-item" *ngFor="let item of filterList" (click)="changeClass(item)">
+        <div class="rating-lable" style="text-transform: capitalize">{{item.class}}</div>
+      <img [class]="item.class" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/mountaineering.jpg">      
+    </div>
+  </div>
+</ion-content>
+
+
+
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-tab3',
+  templateUrl: 'tab3.page.html',
+  styleUrls: ['tab3.page.scss']
+})
+export class Tab3Page {
+  selectedClass: any = '1977';
+
+  filterList: any = [
+    { class: '1977', selected: false },
+    { class: 'aden', selected: false },
+    { class: 'amaro', selected: false },
+    { class: 'brannan', selected: false },
+    { class: 'brooklyn', selected: false },
+    { class: 'clarendon', selected: false },
+    { class: 'gingham', selected: false },
+    { class: 'hudson', selected: false },
+    { class: 'inkwell', selected: false },
+    { class: 'kelvin', selected: false },
+    { class: 'lark', selected: false },
+    { class: 'lofi', selected: false },
+    { class: 'mayfair', selected: false },
+    { class: 'moon', selected: false },
+    { class: 'nashville', selected: false },
+    { class: 'perpetua', selected: false },
+    { class: 'reyes', selected: false },
+    { class: 'rise', selected: false },
+    { class: 'slumber', selected: false },
+    { class: 'stinson', selected: false },
+    { class: 'toaster', selected: false },
+    { class: 'valencia', selected: false },
+    { class: 'walden', selected: false },
+    { class: 'willow', selected: false },
+    { class: 'xpro2', selected: false }
+  ]
+
+
+  constructor() { }
+
+  changeClass(item) {
+    this.filterList.forEach(element => {
+      element.selected = false;
+    });
+    this.selectedClass = item.class;
+    item.selected = true;
+  }
+
+}

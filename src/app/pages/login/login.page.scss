@@ -1,0 +1,135 @@
+.login-page {
+    --background: #ffffff;
+    --padding-start: 30px;
+    --padding-end: 30px;
+}
+
+.forgot-btn {
+    font-size: 17px;
+    margin-top: 20px;
+    --ion-color-base: #666666 !important;
+    font-weight: 600;
+}
+
+.social-icon {
+    text-align: center;
+    .icon {
+        width: 50px;
+        margin: 0px 4px;
+    }
+    margin-top: 15%;
+    margin-bottom: 7%;
+}
+
+.gmail-button {
+    --background: rgba(225, 74, 48, 0);
+    --padding-start: 0px;
+    --padding-end: 20px;
+    height: unset;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    --box-shadow: unset;
+}
+
+.facebook-button {
+    --background: rgba(225, 74, 48, 0);
+    --padding-start: 0px;
+    --padding-end: 0px;
+    height: unset;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    --box-shadow: unset;
+}
+
+.main {
+    width: 100%;
+    height: auto;
+}
+
+div.a {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.b {
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.c {
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.d {
+    width: 60px;
+    height: 60px;
+    background-color: yellow;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.e {
+    width: 60px;
+    height: 60px;
+    background-color: pink;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.f {
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.g {
+    width: 60px;
+    height: 60px;
+    background-color: grey;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}
+
+div.h {
+    width: 60px;
+    height: 60px;
+    background-color: purple;
+    position: fixed;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    padding-top: 23px;
+}

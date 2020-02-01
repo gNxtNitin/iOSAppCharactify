@@ -1,0 +1,7 @@
+{
+  "name": "charactify",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

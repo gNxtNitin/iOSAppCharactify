@@ -1,0 +1,98 @@
+.notification-page {
+    --background: #ffffff;
+    text-align: center;
+
+
+      
+    .send-request-btn {
+        width: 70px;
+        --background: #933734;
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+    .trait-image {
+        font-size: 14px;
+        width: 50px;
+        height: 50px;
+        color: #8a1511;
+        padding-top: 28%;
+        font-weight: 700;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url(/assets/images/round-trait-circle/big-circle.png);
+    }
+    .score-label {
+        color: var(--ion-color-primary);
+        position: absolute;
+        left: 0px;
+        bottom: 14px;
+        text-align: center;
+        width: 100%;
+        font-size: 13px;
+    }
+    .custom-card {
+        margin-top: 8px;
+        margin-bottom: 10px;
+        background: #f3f3f3;
+        ion-card-content {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            -webkit-padding-start: 2px;
+            padding-inline-start: 2px;
+            -webkit-padding-end: 5px;
+            padding-inline-end: 5px;
+        }
+    }
+    ion-avatar {
+        height: 50px;
+        width: 50px;
+    }
+    .notification-title {
+        font-size: 11px;
+        color: black;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+    .notification-msg {
+        font-size: 12px;
+        color: #6e6e6e;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+    .notification-time {
+        font-size: 11px;
+        color: black;
+        padding-left: 10px;
+    }
+}
+
+.notification-header ion-toolbar {    
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+}
+
+.notification-header.header-md::after,
+.notification-header.header-ios::after {
+    display: block;
+}
+
+.notification-header ion-toolbar {    
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+    .notification-walk-through-selector{
+        position: absolute;
+        background: red;
+        right: 45%;
+        top: 50%;
+        height: 0px;
+      }
+    ion-title {
+        -webkit-padding-start: 7px;
+        padding-inline-start: 7px;
+        order: 0;
+        padding-top: 3px;
+        img {
+            height: 35px;
+        }
+    }
+}

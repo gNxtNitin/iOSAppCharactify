@@ -1,0 +1,39 @@
+.lets-begin-page {
+    --background: #ffffff;
+    --padding-start: 30px;
+    --padding-end: 30px;
+    text-align: center;
+    ion-img {
+        height: 150px;
+    }
+    h6 {
+        margin: 40px 0;
+    }
+}
+
+.user-img-wrap {
+    text-align: center;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.user-image {
+    margin-top: 10%;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 10px solid #C2BFC2;
+}
+
+.add-img-icon {
+    position: absolute;
+    right: -2px;
+    bottom: 35px;
+    font-size: 40px;
+    color: #933734;
+    background: white;
+    border-radius: 50%;
+}

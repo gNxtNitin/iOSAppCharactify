@@ -1,0 +1,20 @@
+<ion-header class="education-update-modal-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="close()" class="modal-close">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            Post Images
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="image-viwer-modal" fullscreen padding scroll-y="false" style="max-height: calc(100vh);">
+    <ion-slides zoom style="height: calc(100vh - 80px);">
+        <ion-slide *ngFor="let item of objectFromParent.selectedItem">
+            <img [src]="item.Path" />
+        </ion-slide>
+    </ion-slides>
+</ion-content>

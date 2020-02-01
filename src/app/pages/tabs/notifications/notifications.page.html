@@ -1,0 +1,90 @@
+<ion-header class="notification-header">
+    <ion-toolbar>
+        <ion-title text-left slot="secondary">
+            <img alt="logo" height="40" src="assets/images/header-logo.png" (click)="navigateToHome()">
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="primary" (click)="showPopOver($event)">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+            <p id="notification-pop" (click)="showNotificationPopOverOverlay($event, 'search')" class="notification-walk-through-selector"></p>
+        </ion-buttons>
+    </ion-toolbar>
+    <div id="initilizer"></div>
+</ion-header>
+
+<ion-content class="notification-page" (ionScrollEnd)="getNotificationList()">
+    <app-error-handler #errorHandler></app-error-handler>
+    <div *ngIf="connectionNotificationList.length">
+        <ion-card *ngFor="let item of connectionNotificationList; let i = index" class="custom-card">
+            <ion-card-content *ngIf="item.type == 'CHAT'">
+                <ion-row>
+                    <ion-col align-self-start align-self-center size="2">
+                        <ion-avatar (click)="naviagetToOtherRatingPage(item)">
+                            <img [src]="item.userprofilepic ? item.userprofilepic : 'assets/images/default-avatar.png'">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col align-self-start align-self-center text-left size="7" (click)="naviagetToNotificationDetailPage(item)">
+                        <p class="notification-title"> <b>{{item.Title}}</b></p>
+                        <p class="notification-msg">{{item.desc}}</p>
+                        <p class="notification-time"> {{item.createddate | timeAgo}}</p>
+                    </ion-col>
+                    <ion-col align-self-center text-right size="3">
+                        <!-- <ion-icon style="font-size: 30px;" name="undo"></ion-icon>                         -->
+                        <!-- <p style="color: #4277d8;">Reply</p> -->
+                        <ion-button class="send-request-btn" size="small" shape="round" (click)="naviagetToNotificationDetailPage(item)">Reply</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+            <ion-card-content *ngIf="item.type != 'AR' && item.type != 'RA' && item.type != 'RWA' && item.type != 'CHAT'">
+                <ion-row>
+                    <ion-col align-self-start align-self-center size="2">
+                        <ion-avatar (click)="naviagetToOtherRatingPage(item)">
+                            <img [src]="item.userprofilepic ? item.userprofilepic : 'assets/images/default-avatar.png'">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col align-self-start align-self-center text-left size="8" (click)="naviagetToNotificationDetailPage(item)">
+                        <p class="notification-title"> <b>{{item.desc}}</b></p>
+                        <p class="notification-time"> {{item.createddate | timeAgo}}</p>
+                    </ion-col>
+                    <ion-col align-self-center text-right size="2" (click)="naviagetToNotificationDetailPage(item)">                        
+                        <img style="height: 18px;
+                        margin-left: 18px;" src="data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%23c8c7cc'/></svg>">
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+            <ion-card-content *ngIf="item.type =='AR' || item.type =='RA' || item.type =='RWA'">
+                <ion-row>
+                    <ion-col align-self-start align-self-center size="2">
+                        <ion-avatar (click)="naviagetToOtherRatingPage(item)">
+                            <img [src]="item.userprofilepic ? item.userprofilepic : 'assets/images/default-avatar.png'">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col align-self-start text-left align-self-center [size]="item.type=='RWA' ? 8 : 10">
+                        <p class="notification-title"> <b>{{item.desc}}</b></p>
+                        <p class="notification-time"> {{item.createddate | timeAgo}}</p>
+                    </ion-col>
+                    <ion-col align-self-start align-self-center text-right [size]="item.type=='RWA' ? 2 : 6" *ngIf="item.type=='RWA'" (click)="naviagetToNotificationDetailPage(item)">
+                        <div style="margin:0 auto; position:relative; width: 50px; height: 50px;">
+                            <img src="assets/images/round-trait-circle/big-circle.png" style="max-height: 50px;
+                            max-width: 50px;">
+                            <strong class="score-label">{{item.score ? item.score : 0 | number : '1.1-2'}}</strong>
+                        </div>
+                    </ion-col>
+                    <ion-col align-self-end align-self-center size="12" class="ion-text-end" *ngIf="item.type!='RWA'" style="margin-top: -20px;">
+                        <ion-button class="send-request-btn" size="small" shape="round" (click)="approveRequest(item,'Accepted', i)">{{item.type=='RA' ? 'Yes' : 'Add'}}
+                        </ion-button>
+                        <ion-button color="medium" class="send-request-btn" size="small" shape="round" (click)="approveRequest(item,'Rejected', i)">
+                            {{item.type=='RA' ? 'No' : 'Decline'}}</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-card *ngIf="!connectionNotificationList.length">
+        <ion-card-content text-center>
+            <h3>No notifications found.</h3>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-header class="gallery-header">
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons> -->
+        <ion-buttons slot="start">            
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>New Post</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="submitPost()" color="secondary" fill="clear">Share</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <app-error-handler #errorHandler></app-error-handler>
+    <br>
+    <ion-item>
+        <ion-avatar slot="start">
+            <img [src]="user.UserProfilePic ? user.UserProfilePic : 'assets/images/default-avatar.png'">
+        </ion-avatar>
+        <ion-textarea auto-grow="true" placeholder="Enter more information here..." [(ngModel)]="postDescription"
+            style="max-height: 250px;">
+        </ion-textarea>
+    </ion-item>
+
+    <ion-item (click)="addTag()">
+        <ion-label>
+            <h3>Tag People</h3>
+        </ion-label>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-chip *ngFor="let tag of taggedList">
+                    <ion-avatar>
+                        <img [src]="tag.UserProfilePic ? tag.UserProfilePic : 'assets/images/default-avatar.png'">
+                    </ion-avatar>
+                    <ion-label>{{tag.FirstName}}</ion-label>
+                    <ion-icon name="close-circle" (click)="removeTaggedItem(tag)"></ion-icon>
+                </ion-chip>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <br *ngIf="feedType == 'video'">
+    <video controls class="video" *ngIf="feedType == 'video'" height="240" width="100%" style="object-fit: cover;"
+        controlsList="nodownload" preload="metadata" poster="assets/images/video-Thumbnail.jpg">
+        <source [src]="videoPlayUrl" type="video/mp4">
+    </video>
+    <h4 text-center *ngIf="feedType != 'video' && selectedItem.length > 0">Selected images</h4>
+    <ion-grid *ngIf="feedType != 'video'">
+        <ion-row>
+            <ion-col size="4" *ngFor="let item of selectedItem">
+                <img class="item-img" [src]="item.imagePath" [ngClass]="item.filter">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

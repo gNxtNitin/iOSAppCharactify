@@ -1,0 +1,38 @@
+<ion-header class="reaction-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" (click)="close()"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      People who reacted
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="view-reaction-list" padding>
+  <div class="scroll-wrapper">
+    <div class="scroll-item" *ngFor="let emoj of objectFromParent.selectedItem; let i=index"
+      [ngClass]="emoj.selected ? emoj.ReactionType == 'All' ? 'selected-segment all-segement' : 'selected-segment' : ''" (click)="selectedSegment(emoj)">
+
+      <ion-label *ngIf="emoj.ReactionType == 'All'">{{emoj.ReactionType}}</ion-label>
+      <ion-img *ngIf="emoj.ReactionType != 'All'" class="segment-img"
+        [src]="'assets/images/emoji/'+emoj.ReactionType+'.gif'"></ion-img>
+    </div>
+  </div>
+
+
+
+  <ion-list>
+    <ion-item *ngFor="let item of reactionsPeoplelist">
+      <ion-avatar slot="start" (click)="naviagetToOtherRatingPageFromComment(item)">
+        <img [src]="item.UserProfilePic ? item.UserProfilePic : 'assets/images/default-avatar.png'">
+      </ion-avatar>
+      <ion-label (click)="naviagetToOtherRatingPageFromComment(item)">
+        {{item.Name}}
+      </ion-label>
+      <ion-avatar slot="end">
+        <img [src]="'assets/images/emoji/'+item.ReactionType+'.gif'">
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-content>

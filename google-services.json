@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1076006751428",
+    "firebase_url": "https://app-charactify.firebaseio.com",
+    "project_id": "app-charactify",
+    "storage_bucket": "app-charactify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076006751428:android:217ff19b0ceef8da",
+        "android_client_info": {
+          "package_name": "com.app.charactify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076006751428-fvqt2v3hsjb6k7hqnftnh4d9c5ke7d0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYMwLJSY5M6mB8GXMwn04O4sd_mHoS0yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076006751428-fvqt2v3hsjb6k7hqnftnh4d9c5ke7d0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

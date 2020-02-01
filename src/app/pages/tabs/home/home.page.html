@@ -1,0 +1,250 @@
+<ion-header class="home-header">
+    <ion-toolbar>
+        <ion-title text-left slot="secondary">
+            <img alt="logo" height="40" src="assets/images/header-logo.png" (click)="navigateToHome()">
+        </ion-title>
+        <ion-buttons slot="primary">
+            
+            <ion-button color="primary" (click)="showPopOver($event)">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+            <p id="home-pop" (click)="homeShowPopOverOverlay($event, 'search')" class="home-walk-through-selector"></p>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-page">
+    <app-error-handler #errorHandler></app-error-handler>
+
+    <ion-row style="margin-top: 2%;">
+        <ion-col size="3" text-center>
+            <ion-avatar class="user-avatar">
+                <img [src]="userData.UserProfilePic ? userData.UserProfilePic : 'assets/images/default-avatar.png'">
+            </ion-avatar>
+            <div class="user-name ion-text-capitalize">{{userData.FirstName}} {{userData.LastName}}</div>
+        </ion-col>
+        <ion-col>
+            <ion-row>
+                <ion-col size="4" text-center align-self-end>
+                    <p class="total-score">
+                        {{serverResponse.AverageScoreAllTrait ? serverResponse.AverageScoreAllTrait : 0 | number : '1.1-2'}}</p>
+                    <p>Score</p>
+                </ion-col>
+                <ion-col size="4" text-center align-self-end (click)="navigateToAllCategoryList()">
+                    <p class="total-score">{{serverResponse.CountCharactifiers ? serverResponse.CountCharactifiers : 0}}
+                    </p>
+                    <p>Charactifiers</p>
+                </ion-col>
+                <ion-col size="4" text-center align-self-end (click)="navigateToMyPostPage()">
+                    <p class="total-score">{{serverResponse.CountPost ? serverResponse.CountPost : 0}}</p>
+                    <p>Posts</p>
+                </ion-col>
+            </ion-row>
+
+            <ion-button (click)="navigateToProfile()" size="large" expand="block" class="edit-profile-btn">
+                Edit Profile
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Score Summary - By Category</p>
+        </ion-label>
+    </ion-item>
+
+    <div class="scroll-wrapper">
+        <div class="scroll-item" (click)="navigateToSelfRating()">
+            <div class="self">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/self.png">
+                    <aside>{{categoryObj.Self.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item" (click)="navigateToScoreSummaryByCategory(categoryObj.Family.id,categoryObj.Family.name)">
+            <div class="family">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/family.png">
+                    <aside>{{categoryObj.Family.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item" (click)="navigateToScoreSummaryByCategory(categoryObj.Friends.id,categoryObj.Friends.name)">
+            <div class="friends">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/friends.png">
+                    <aside>{{categoryObj.Friends.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item" (click)="navigateToScoreSummaryByCategory(categoryObj.Co_workers.id,categoryObj.Co_workers.name)">
+            <div class="co-workers">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/co-worker.png">
+                    <aside>{{categoryObj.Co_workers.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-item" (click)="navigateToScoreSummaryByCategory(categoryObj.Acquaintances.id,categoryObj.Acquaintances.name)">
+            <div class="acquaintances">
+                <div class="people-category-container">
+                    <img src="assets/images/category-list-img/acuatances.png">
+                    <aside>{{categoryObj.Acquaintances.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Score Summary - By Trait</p>
+        </ion-label>
+    </ion-item>
+
+    <div class="main">
+        <article>
+            <div class="shine" (click)="navigateToAllCategoryList()">
+                <img src="assets/images/round-trait-circle/big-circle.png">                
+                <span>{{serverResponse.AverageScoreAllTrait ? serverResponse.AverageScoreAllTrait : 0 | number : '1.1-2'}}</span>
+            </div>
+            <div class="honest" (click)="navigateToScoreSummaryByTrait(traitObj.Honest.Traitid,traitObj.Honest.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/honest.png">
+                    <aside>{{traitObj.Honest.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+            <div class="honorable" (click)="navigateToScoreSummaryByTrait(traitObj.Honorable.Traitid,traitObj.Honorable.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/confidence.png">
+                    <aside>{{traitObj.Honorable.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="respect" (click)="navigateToScoreSummaryByTrait(traitObj.Respectful.Traitid,traitObj.Respectful.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/respectful.png">
+                    <aside>{{traitObj.Respectful.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="fair" (click)="navigateToScoreSummaryByTrait(traitObj.Fair.Traitid,traitObj.Fair.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/fair.png">
+
+                    <aside>{{traitObj.Fair.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="forgiving" (click)="navigateToScoreSummaryByTrait(traitObj.Forgiving.Traitid,traitObj.Forgiving.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/forgive.png">
+                    <aside>{{traitObj.Forgiving.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="generous" (click)="navigateToScoreSummaryByTrait(traitObj.Generous.Traitid,traitObj.Generous.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/generous.png">
+                    <aside>{{traitObj.Generous.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+
+            <div class="courageous" (click)="navigateToScoreSummaryByTrait(traitObj.Courageous.Traitid,traitObj.Courageous.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/courageous.png">
+                    <aside>{{traitObj.Courageous.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="polite" (click)="navigateToScoreSummaryByTrait(traitObj.Polite.Traitid,traitObj.Polite.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/adaptability.png">
+                    <aside>{{traitObj.Polite.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="loving" (click)="navigateToScoreSummaryByTrait(traitObj.Loving.Traitid,traitObj.Loving.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/compassion.png">
+                    <aside>{{traitObj.Loving.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+
+            <div class="trustworthy" (click)="navigateToScoreSummaryByTrait(traitObj.Trustworthy.Traitid,traitObj.Trustworthy.name)">
+                <div class="estrellas inverso">
+                    <img src="assets/images/round-trait-circle/loyalty.png">
+                    <aside>{{traitObj.Trustworthy.score | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Top Traits</p>
+        </ion-label>
+    </ion-item>
+
+    <div class="scroll-wrapper">
+        <div class="trait-item" *ngFor="let item of topTraits">
+            <div class="honest-top-container">
+                <div class="top-trait top-trait-inverso">
+                    <img [src]="item.img">
+                    <aside [ngClass]="item.traitClass" class="top-traits-label">{{item.TraitsScore | number : '1.1-2'}}</aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Top Charactifiers</p>
+        </ion-label>
+    </ion-item>
+
+    <div class="scroll-wrapper">
+        <div class="trait-item" *ngFor="let item of serverResponse.TopCharactifierslst | slice:0:3" (click)="navigateToOtherHome(item)">
+            <div class="top-user">
+                <ion-avatar class="user-avatar">
+                    <img [src]="item.userProfilePic ? item.userProfilePic : 'assets/images/default-avatar.png'">
+                </ion-avatar>
+                <span class="user-score">{{item.Score ? item.Score : 0 | number : '1.1-2'}}</span>
+            </div>
+            <div class="rating-lable">{{item.FirstName}}</div>
+        </div>
+    </div>
+
+    <ion-item lines="inset">
+        <ion-label>
+            <p>Score History</p>
+        </ion-label>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col text-center>
+                <ion-segment [(ngModel)]="selectedLineChartOption" (ionChange)="segmentChanged($event)" scrollable>
+                    <ion-segment-button value="threeMonthslst" checked>
+                        <ion-label>3 Months</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="sixMonthslst">
+                        <ion-label>6 Months</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="oneYearlst">
+                        <ion-label>1 Year</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="begnninglst">
+                        <ion-label>Beginning</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>                
+                <canvas #lineCanvas></canvas>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

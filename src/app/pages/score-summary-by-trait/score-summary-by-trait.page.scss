@@ -1,0 +1,158 @@
+.score-summary-by-trait-page.ios .user-score {
+    font-size: 9px !important;
+    padding-top: 10px !important;
+}
+.score-summary-by-trait-page {
+    --background: #ffffff;
+    text-align: center;
+    .user-avatar {
+        margin: 0 auto;
+    }
+    .graphClickProtractor{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    p {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 14px;
+        color: #5d5d5d;
+        text-transform: capitalize;
+    }
+    h6 {
+        margin: 15px 0;
+    }
+    ion-item {
+        --background: #fefefe;        
+        --inner-padding-bottom: 0px;
+        ion-label {
+            margin-bottom: 0px;
+        }
+        ion-label p {
+            font-size: 11px;
+            font-weight: 800;
+            color: #5d5d5d;
+            text-transform: capitalize;
+        }
+    }
+    .rating-box {
+        height: 120px;
+        width: 120px;
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 10px solid #c2bfc2;
+        padding-top: 28px;
+        font-size: 37px;
+        font-weight: bold;
+        color: #be2e55 !important;
+        margin-top: 30px;
+    }
+    .text-bold {
+        font-weight: 500;
+    }
+    .text-right {
+        text-align: right;
+        padding-right: 30px;
+    }
+    .scroll-wrapper {
+        margin-top: 10px;        
+        width: 100%;
+        white-space: nowrap;        
+    }
+    .scroll-item {
+        display: inline-block;
+        text-align: center;        
+        position: relative;
+    }
+    .trait-item {
+        display: inline-block;
+        text-align: center;
+        margin: 0 20px;
+    }
+    .rating-count {
+        height: 60px;
+        width: 60px;
+        border: 3px solid #949089;
+        border-radius: 50%;
+        padding-top: 21px;
+        color: #be2e55;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .top-user {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        font-weight: bold;
+        position: relative;
+        .user-score {
+            position: absolute;
+            right: -12px;
+            top: 36%;
+            background: #666666;
+            padding: 4px;
+            color: white;
+            border-radius: 41px;
+            font-size: 13px;
+        }
+    }
+    .rating-lable {
+        font-size: 8px;
+        margin: 5px 0;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 60px;
+    }
+    .traits-img {
+        height: 75px;
+        width: 75px;
+        margin: 5px 10px;
+    }
+    ion-segment {
+        background: #ffffff !important;
+      }
+      .segment-button-checked {
+        background: #ffffff !important;
+        color: #3e3e3e !important;
+        --color-checked: #515151;
+      }
+      .ios.segment-button-checked {
+        border-bottom: 2px solid #515151;
+      }
+      ion-segment-button {
+        --border-radius: 0px;
+        --border-style: solid;
+        --border-width: 2px;
+        --transition: 100ms all linear;
+        --padding-top: 0;
+        --padding-end: 0px;
+        --padding-bottom: 0;
+        --padding-start: 0px;
+        --transition: color 0.15s linear 0s, opacity 0.15s linear 0s;
+        min-width: 75px;
+        max-width: 360px;
+        min-height: 30px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        line-height: 40px;
+        text-transform: initial;
+        border: none;
+        color: #4f4b60;
+      }
+    }
+
+.score-summary-by-trait-header ion-toolbar {
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+}
+
+.score-summary-by-trait-header.header-md::after,
+.score-summary-by-trait-header.header-ios::after {
+    display: block;
+}

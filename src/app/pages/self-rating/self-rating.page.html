@@ -1,0 +1,90 @@
+<ion-header class="self-rating-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Self Rating
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="self-rating-page">    
+
+    <ion-grid>
+        <ion-row style="height: 175px; padding:20px 0;">
+            <ion-col text-center>
+                <ion-avatar>
+                    <img [src]="userData.UserProfilePic ? userData.UserProfilePic : 'assets/images/default-avatar.png'">
+                </ion-avatar>
+                <h6 class="ion-text-capitalize">{{userData.FirstName}} {{userData.LastName}}</h6>
+            </ion-col>
+            <ion-col text-center>
+                <ion-avatar>
+                    <img src="assets/images/round-trait-circle/big-circle.png">
+                </ion-avatar>
+                <span class="average-rating-text">{{averageRating ? averageRating : 0.0 | number : '1.1-2'}}</span>
+                    <h6 class="ion-text-capitalize">Score</h6>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <app-error-handler #errorHandler></app-error-handler>
+
+    <ion-slides pager="true" #slideWithNav style="min-height: 460px; background: #fff;">
+        <ion-slide *ngFor="let number of [0,1,2,3,4]; let i = index">
+            <ion-list lines="none" no-padding style="width: 85%;">
+                <div class="rating-card" *ngFor="let item of traitObj | slice: 2*i: (2*i)+2">
+                    <ion-item no-padding>
+                        <ion-img [src]="item.Image" class="traits-img"></ion-img>
+                        <ion-label class="ion-text-wrap" style="-webkit-margin-start: 8px; margin-inline-start: 8px;"> {{item.TraitMsg}}.</ion-label>
+                    </ion-item>
+                    <ion-item no-padding>
+                        <ion-label class="rating-btn-wrap">
+                            <ion-row>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 1}" (click)="item.Score = 1; updateRatings();">1</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 2}" (click)="item.Score = 2; updateRatings();">2</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 3}" (click)="item.Score = 3; updateRatings();">3</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 4}" (click)="item.Score = 4; updateRatings();">4</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 5}" (click)="item.Score = 5; updateRatings();">5</div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 6}" (click)="item.Score = 6; updateRatings();">6</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 7}" (click)="item.Score = 7; updateRatings();">7</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 8}" (click)="item.Score = 8; updateRatings();">8</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 9}" (click)="item.Score = 9; updateRatings();">9</div>
+                                </ion-col>
+                                <ion-col>
+                                    <div [class]="item.ClassName" [ngClass]="{'selected-box': item.Score == 10}" (click)="item.Score = 10; updateRatings();">10</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-label>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </ion-slide>
+    </ion-slides>
+
+    
+
+    <ion-button [disabled]="!enableSave" size="large" class="custom-button" (click)="saveAndGoToHome()" style="margin-top: 15px;">
+        Charactify
+    </ion-button>
+</ion-content>

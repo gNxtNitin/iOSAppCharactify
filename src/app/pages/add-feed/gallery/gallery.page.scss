@@ -1,0 +1,104 @@
+.new-post-modal {
+  .item-img {
+    min-width: 100%;
+    height: 177px;
+    object-fit: contain;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .backgroud-manage {
+    background-color: #fff;
+    position: relative;
+    .fab-md-dark {
+      background-color: #fff;
+      box-shadow: 0 0 0 17px #dbdbdb;
+      margin-bottom: 80px !important;
+    }
+    .fab-md-danger {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+  .user-img-wrap {
+    text-align: center;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .user-image {
+    margin-top: 43%;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    border: 3px solid #c2bfc2;
+  }
+  .caption-box {
+    border: 1px solid #d9d9d9;
+    width: 350px;
+    text-align: center;
+    margin: auto;
+    height: 150px;
+    margin-top: 10%;
+  }
+
+  .select-filter{
+    -webkit-filter: hue-rotate(72deg) contrast(0.4) saturate(0.85) brightness(0.6);
+    filter: hue-rotate(72deg) contrast(0.4) saturate(0.85) brightness(0.6);
+  }
+}
+.gallery-header {
+  background: #fff;
+  .selected-image {
+    height: 240px;
+    width: 100%;
+    overflow: hidden;
+    background: white;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    img {
+      max-height: 240px;
+    }
+    .multi-select-icon{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin: 15px;      
+      --border-radius: 52px;
+      height: 50px;
+      width: 50px;
+      ion-icon{
+        font-size: 30px;
+        --ion-color-base: #bcbcbc !important;
+      }
+    }
+    .multiSelect{
+      ion-icon{        
+        --ion-color-base: #5e5d5d !important;
+      }      
+    }    
+  }
+  ion-button.button-clear{
+    --background: unset;
+  }
+  ion-toolbar {    
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+  }
+}
+.gallery-header.header-md::after,
+.gallery-header.header-ios::after {
+  display: block;
+}
+
+.new-post-modal-footer {
+  ion-segment {
+    --background: white !important;
+  }
+  .segment-button-checked {
+    background: #fff;
+  }
+}

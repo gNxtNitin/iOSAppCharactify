@@ -1,0 +1,38 @@
+<ion-header transparent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding class="email-signup-page" fullscreen>
+    <ion-img src="assets/images/charactify-logo.png"></ion-img>
+    <form [formGroup]="emailSignUpForm" (ngSubmit)="onEmailSignUpSubmit()" [ngStyle]="{'margin-top': !emailSignUpForm.valid && formSubmitted ? '5%' : '15%' }">
+        <p class="form-invalid" *ngIf="!emailSignUpForm.valid  && formSubmitted">All fields are required.</p>
+        <app-error-handler #errorHandler></app-error-handler>
+
+        <ion-input class="custom-input" placeholder="Name" formControlName="FirstName">
+            <ion-icon name="person" class="input-icon"> </ion-icon>
+        </ion-input>
+        <p class="invalidMsg" *ngIf="!emailSignUpForm.controls.FirstName.valid  && (emailSignUpForm.controls.FirstName.dirty || formSubmitted)">
+            Please enter your name.</p>
+
+        <ion-input class="custom-input" placeholder="E-mail" formControlName="EmailId">
+            <ion-icon name="mail" class="input-icon"> </ion-icon>
+        </ion-input>
+        <p class="invalidMsg" *ngIf="!emailSignUpForm.controls.EmailId.valid  && (emailSignUpForm.controls.EmailId.dirty || formSubmitted)">
+            Please enter a valid E-mail.</p>
+        <ion-input class="custom-input" type="password" placeholder="Password" formControlName="Password" clear-on-edit="false">
+            <ion-icon name="lock" class="input-icon"> </ion-icon>
+        </ion-input>
+        <p class="invalidMsg" *ngIf="!emailSignUpForm.controls.Password.valid  && (emailSignUpForm.controls.Password.dirty || formSubmitted)">
+            Please enter your password.</p>
+        <ion-input [disabled]="!emailSignUpForm.controls.Password.value" class="custom-input" type="password" placeholder="Confirm password" formControlName="confirmPassword" clear-on-edit="false">
+            <ion-icon name="lock" class="input-icon"> </ion-icon>
+        </ion-input>
+        <p class="invalidMsg" *ngIf="!emailSignUpForm.controls.confirmPassword.valid  && (emailSignUpForm.controls.confirmPassword.dirty || formSubmitted)">Confirm password is blank or doesn't match.</p>
+        <ion-button size="large" expand="block" class="custom-button" type="submit">
+            Sign Up
+        </ion-button>
+    </form>
+</ion-content>

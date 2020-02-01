@@ -1,0 +1,369 @@
+<ion-header class="feed-header">
+    <ion-toolbar>
+        <ion-title text-left slot="secondary">
+            <img alt="logo" height="40" src="assets/images/header-logo.png">
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="primary" (click)="showPopOver($event)">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+            <p id="feed-pop" (click)="feedShowPopOverOverlay($event, 'search')" class="feed-walk-through-selector"></p>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="feed-page" (ionScroll)="checkMedia($event)" [scrollEvents]="false">
+
+    <app-error-handler #errorHandler></app-error-handler>
+
+    <ion-row style="overflow: auto;">
+        <ion-col size="2">
+            <div class="story" (click)="goToNewGallery()">
+                <a>
+                    <span class="img">
+                        <img [src]="userData?.UserProfilePic ? userData?.UserProfilePic : 'assets/images/default-avatar.png'">
+                    </span>
+                    <span class="info">
+                        <strong>Your Story</strong>
+                    </span>
+                </a>
+                <ion-icon name="md-add-circle" class="add-post-icon"></ion-icon>
+            </div>            
+        </ion-col>
+        <ion-col size="10" text-left>
+            <div id="stories"></div>
+        </ion-col>
+    </ion-row>
+
+    <ion-refresher slot="fixed" (ionRefresh)="loadFeedData($event, 'isRefresher')">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+            refreshingText="Fetching feeds...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-card *ngIf="errorOccured">
+        <ion-card-content text-center>
+            <h3>{{errorMsg}}</h3>
+        </ion-card-content>
+    </ion-card>
+    <div *ngIf="!errorOccured">
+        <div id="initilizer"></div>
+        <!--pre loader-->
+
+        <div *ngIf="!feedList.length">
+            <div class="ion-padding custom-skeleton">
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                <ion-skeleton-text animated></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </div>
+
+            <ion-list>
+                <ion-list-header>
+                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                </ion-list-header>
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-avatar>
+                    <ion-label>
+                        <h3>
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </h3>
+                        <p>
+                            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        </p>
+                        <p>
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </p>
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail slot="start">
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-thumbnail>
+                    <ion-label>
+                        <h3>
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </h3>
+                        <p>
+                            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        </p>
+                        <p>
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </p>
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+                    <ion-label>
+                        <h3>
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </h3>
+                        <p>
+                            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        </p>
+                        <p>
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+
+        <!-- pre loader ends -->
+        <div *ngIf="feedList.length">
+            <ion-card *ngFor="let item of feedList; let index = index">
+                <ion-item lines="none" *ngIf="item.feedType != 'Charactify'">
+                    <ion-avatar item-start (click)="naviagetToOtherRatingPage(item)">
+                        <img src="{{item?.UserProfilePic ? item?.UserProfilePic : 'assets/images/default-avatar.png'}}">
+                    </ion-avatar>
+                    <ion-label class="user-lable" (click)="naviagetToOtherRatingPage(item)">
+                            <strong class="ion-text-capitalize">{{item.Name}}</strong>
+                        <p item-right class="post-date">{{item.createdDate | feedtimeAgo}}</p>
+                    </ion-label>
+                    <ion-icon name="more" slot="end" (click)="pressEvent(item, index)"
+                        *ngIf="item.UserID == userData.UserID || item.enableTagMenu"></ion-icon>
+                </ion-item>
+
+                <ion-item lines="none" *ngIf="item.feedType == 'Charactify'">
+                    <ion-avatar item-start style="position: relative;" (click)="naviagetToOtherRatingPage(item)">
+                        <img src="{{item?.UserProfilePic ? item?.UserProfilePic : 'assets/images/default-avatar.png'}}">
+                        <ion-avatar item-start class="img-wrap-usr2"
+                            *ngIf="item.takenScorelst[0]?.userid != item.UserID">
+                            <img
+                                [src]="item.takenScorelst[0]?.UserProfilePic ? item.takenScorelst[0]?.UserProfilePic : 'assets/images/default-avatar.png'">
+                        </ion-avatar>
+                    </ion-avatar>
+                    <ion-label class="user-lable ion-text-wrap" style="padding-left: 35px;"
+                        (click)="naviagetToOtherRatingPage(item)">
+                        <strong class="ion-text-capitalize">{{item.Name}}</strong>
+                        {{item.takenScorelst[0]?.userid == item.UserID ? 'self charactified' : 'charactified '}}
+                        <strong class="ion-text-capitalize"
+                            *ngIf="item.takenScorelst[0]?.userid != item.UserID">{{item.takenScorelst[0]?.FirstName + ' ' + item.takenScorelst[0]?.LastName}}</strong>
+                        <p item-right class="post-date">{{item.createdDate | feedtimeAgo}}</p>
+                    </ion-label>
+                    <ion-icon name="more" slot="end" (click)="pressEvent(item, index)"
+                        *ngIf="item.UserID == userData.UserID"></ion-icon>
+                </ion-item>
+
+
+                <ion-card-content class="ion-no-padding">
+                    <p text-left class="card-content-custom" *ngIf="item.description">{{item.description}}</p>
+                    <p text-left class="card-content-custom">
+                        <span *ngFor="let tag of item.taggingslst" class="tags">
+                            <span *ngIf="item.taggingslst.length">@{{tag.FirstName + ' ' + tag.LastName + ' '}}</span>
+                        </span>
+                    </p>                    
+                    <div class="wrapper">
+                        <video controls class="video" *ngIf="item.feedType == 'video'" height="240" width="100%"
+                            style="object-fit: cover;" controlsList="nodownload" preload="metadata"
+                            poster="assets/images/video-Thumbnail.jpg">
+                            <source [src]="item.filePathlst[0].Path" type="video/mp4">
+                        </video>
+                    </div>
+                    <ion-grid *ngIf="item.feedType == 'image'" no-padding>
+                        <ion-row>
+                            <ion-col *ngFor="let img of item.filePathlst | slice:0:2; let i = index;">
+                                <img class="img-loading" [src]="img.Path"
+                                    (click)="openImageViewerModal(item.filePathlst, i)" [ngClass]="img.filter">
+                            </ion-col>
+                            <ion-col *ngIf="item.filePathlst.length > 2">
+                                <img class="img-loading" src="{{item.filePathlst[2]?.Path}}"
+                                    [ngClass]="item.filePathlst[2]?.filter">
+                                <div class="overlay-more-img" (click)="openImageViewerModal(item.filePathlst, 0)">
+                                    <p>+ {{item.filePathlst.length - 2}}</p>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <div class="feed-rating-container" *ngIf="item.feedType == 'Charactify'">
+                        <ion-row align-items-center>
+                            <ion-col size="10">
+                                <ion-row class="custom-row">
+                                    <ion-col *ngFor="let score of item.charactifyScores | slice:0:5">
+                                        <div class="feed-rating-box">
+                                            <ion-img *ngIf="score.TraitsID == '301'"
+                                                src="{{'assets/traits-icons/honest.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '302'"
+                                                src="{{'assets/traits-icons/confident.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '303'"
+                                                src="{{'assets/traits-icons/respectful.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '304'"
+                                                src="{{'assets/traits-icons/fair.png'}}"></ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '305'"
+                                                src="{{'assets/traits-icons/forgiving.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '306'"
+                                                src="{{'assets/traits-icons/generous.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '307'"
+                                                src="{{'assets/traits-icons/courageous.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '308'"
+                                                src="{{'assets/traits-icons/adaptive.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '309'"
+                                                src="{{'assets/traits-icons/compassionate.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '310'"
+                                                src="{{'assets/traits-icons/loyal.png'}}">
+                                            </ion-img>
+                                            <ion-label class="categary-label">{{score.Score | number : '1.1-2'}}
+                                            </ion-label>
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row class="custom-row">
+                                    <ion-col *ngFor="let score of item.charactifyScores | slice:5:10">
+                                        <div class="feed-rating-box">
+                                            <ion-img *ngIf="score.TraitsID == '301'"
+                                                src="{{'assets/traits-icons/honest.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '302'"
+                                                src="{{'assets/traits-icons/confident.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '303'"
+                                                src="{{'assets/traits-icons/respectful.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '304'"
+                                                src="{{'assets/traits-icons/fair.png'}}"></ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '305'"
+                                                src="{{'assets/traits-icons/forgiving.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '306'"
+                                                src="{{'assets/traits-icons/generous.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '307'"
+                                                src="{{'assets/traits-icons/courageous.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '308'"
+                                                src="{{'assets/traits-icons/adaptive.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '309'"
+                                                src="{{'assets/traits-icons/compassionate.png'}}">
+                                            </ion-img>
+                                            <ion-img *ngIf="score.TraitsID == '310'"
+                                                src="{{'assets/traits-icons/loyal.png'}}">
+                                            </ion-img>
+                                            <ion-label class="categary-label">{{score.Score | number : '1.1-2'}}
+                                            </ion-label>
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                            <ion-col size="2" align-self-center>
+                                <div style="width: 55px; position:relative; margin-bottom: 21px;">
+                                    <ion-img src="{{'assets/images/round-trait-circle/big-circle.png'}}"></ion-img>
+                                    <ion-label class="score-lable"><b>{{item.averageRating  | number : '1.1-2'}}</b>
+                                    </ion-label>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+
+                </ion-card-content>
+
+
+                <ion-row class="card-comment-divider">
+                    <ion-col class="text-left">
+                        <div class="row" (click)="viewReactionsListModal(item, item.userRectionsTypeLst)">
+                            <div class="column" *ngFor="let emoj of item.userRectionsTypeLst | slice:0:3">
+                                <img class="emoj-img" src="{{'assets/images/emoji/'+emoj.ReactionType+'.gif'}}"
+                                    style="width:100%">
+                            </div>
+                            <div class="column reaction-count" align-self-center>
+                                <ion-note *ngIf="item.noRections != 0">
+                                    {{item.noRections}}
+                                </ion-note>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col class="text-right">
+                        <ion-note (click)="viewCommentListModal(item.usercommentLst, item)"
+                            *ngIf="item.noComments != 0">
+                            {{item.noComments}} {{item.noComments == 1 ? 'Comment' : 'Comments'}}
+                        </ion-note>
+                    </ion-col>
+                </ion-row>
+                <ion-row no-padding>
+                    <ion-col no-padding>
+                        <div class="divider"></div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="comment-footer">
+                    <ion-col align-self-center text-left no-padding [size]="item.feedType != 'Charactify' ? 4 : 6">
+                        <ion-button color="medium" fill="clear" size="small" (click)="showReactions($event, item)"
+                            (press)="showReactions($event)">
+                            <ion-img slot="start"
+                                src="{{item.currentUserRection ? 'assets/images/emoji/' + item.currentUserRection + '.gif' : 'assets/images/emoji/LK.png'}}"
+                                class="card-action-btn"></ion-img>
+                            <span *ngIf="!item.currentUserRection">Like</span>
+                            <span *ngIf="item.currentUserRection == 'LK'">Like</span>
+                            <span *ngIf="item.currentUserRection == 'LO'">Love</span>
+                            <span *ngIf="item.currentUserRection == 'SH'">Shocked</span>
+                            <span *ngIf="item.currentUserRection == 'JE'">Jealous</span>
+                            <span *ngIf="item.currentUserRection == 'EM'">Embarassing</span>
+                            <span *ngIf="item.currentUserRection == 'AN'">Angry</span>
+                            <span *ngIf="item.currentUserRection == 'ST'">Stupid</span>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col align-self-center text-center no-padding [size]="item.feedType != 'Charactify' ? 4 : 6">
+                        <ion-button color="medium" fill="clear" size="small"
+                            (click)="item.noComments != 0 ? viewCommentListModal(item.usercommentLst, item) : false">
+                            <ion-img slot="start" src="{{'assets/images/comment.png'}}" class="card-action-btn">
+                            </ion-img>
+                            <span>Comment</span>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col align-self-center text-right no-padding size="4" *ngIf="item.feedType != 'Charactify'">
+                        <ion-button color="medium" fill="clear" size="small" (click)="shareModal(item)">
+                            <ion-img slot="start" src="{{'assets/images/share.png'}}" class="card-action-btn"></ion-img>
+                            <span>Share</span>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row no-padding>
+                    <ion-col no-padding>
+                        <div class="divider"></div>
+                    </ion-col>
+                </ion-row>
+
+                <ion-list>
+                    <ion-item *ngFor="let comment of item.usercommentLst | slice:0:2" lines="none" class="comment-list">
+                        <ion-avatar slot="start" (click)="naviagetToOtherRatingPageFromComment(comment)">
+                            <img
+                                src="{{comment?.UserProfilePic ? comment?.UserProfilePic : 'assets/images/default-avatar.png'}}">
+                        </ion-avatar>
+
+                        <ion-label class="comment-txt">
+                            <h3 (click)="naviagetToOtherRatingPageFromComment(comment)">{{comment.Name}}</h3>
+                            <p>{{comment.Description}}</p>
+                            <p><small>{{comment.createdDate | feedtimeAgo}}</small></p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item lines="none" class="comment-list comment-input-item">
+                        <ion-avatar slot="start">
+                            <img
+                                src="{{userData?.UserProfilePic ? userData?.UserProfilePic : 'assets/images/default-avatar.png'}}">
+                        </ion-avatar>
+                        <ion-input placeholder="Write a comment..." [(ngModel)]="item.commentDec"></ion-input>
+                        <ion-button slot="icon-only" (click)="addComment(item)" [disabled]="!item.commentDec"
+                            slot="end">
+                            <ion-icon name="send" mode="md"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-list>
+            </ion-card>
+            <ion-infinite-scroll threshold="200px" (ionInfinite)="loadFeedData($event)">
+                <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading feeds...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </div>
+    </div>
+
+</ion-content>

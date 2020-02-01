@@ -1,0 +1,94 @@
+ion-content {
+    padding: 0;
+    --background: transparent;
+}
+ion-grid{
+  border-radius: 88px;
+    background: white;
+}
+
+.wrapper {    
+    img {
+      width: 70px;
+      cursor: pointer;
+      transition: transform 500ms ease;
+  
+      &:hover {
+        transform: scale(1.5);
+        transition: transform 500ms ease;
+        .emoji-name {
+          display: block;
+        }
+      }      
+    }
+  
+  }
+  .wrapper img:hover{
+ .emoji-name{
+    display : block;
+  }
+}
+
+
+  
+  .like {
+    cursor: pointer;
+    &.liked {
+      font-weight: bold;
+      color: #3B5998;
+    }
+  }
+  
+  .emojis {
+    border-radius: 80px;
+    display: flex;
+    .emoji-name{      
+      display: none;
+    }
+  }
+  
+  
+  .reactions {
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .reaction-counts {
+    height: 100px;
+    display: inline;
+    float: left;
+  
+    img {
+      position: relative;
+      bottom: -10px;
+      width: 32px;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

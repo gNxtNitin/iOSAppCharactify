@@ -1,0 +1,36 @@
+<ion-header class="all-category-list-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">            
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>All Category</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="primary" (click)="showPopOver($event)">
+                <ion-icon slot="icon-only" name="funnel"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="categoryList" class="all-category-list">
+    <app-error-handler #errorHandler></app-error-handler>
+    <ion-item *ngFor="let item of categoryList.AllCategory">
+        <ion-avatar slot="start" (click)="naviagetToOtherProfilePage(item)">
+            <img [src]="item.UserProfilePic">
+        </ion-avatar>
+        <ion-label>
+            <h2><strong class="ion-text-capitalize">{{item.FirstName}} {{item.LastName}}</strong></h2>
+            <p> ({{item.CatName=='CoWorkers' ? 'Co-worker' : item.CatName}})</p>
+        </ion-label>
+        <ion-avatar slot="end" style="position: relative;" (click)="navigateToOtherHome(item)">
+            <img src="assets/images/round-trait-circle/big-circle.png">
+            <strong class="score-label" [ngStyle]="{'right':item.ScoreByuser === '10.0' ? '19px' : '22px' }">{{item.ScoreByuser ? item.ScoreByuser : 0 | number : '1.1-2'}}</strong>
+        </ion-avatar>
+    </ion-item>
+
+    <ion-card *ngIf="!categoryList.AllCategory.length">
+        <ion-card-content text-center>
+            <h3>No result found</h3>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img [src]="objectFromParent.selectedItem.userprofilepic ? objectFromParent.selectedItem.userprofilepic : 'assets/images/default-avatar.png'">
+            </ion-avatar>
+            <ion-label class="ion-text-capitalize">
+                Message to {{objectFromParent.selectedItem.firstname}}
+            </ion-label>
+        </ion-item>
+        <ion-row no-padding>
+            <ion-col no-padding>
+                <div class="divider"></div>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <ion-textarea padding rows="25" cols="20" [(ngModel)]="description" placeholder="Your message..."></ion-textarea>
+</ion-content>
+<ion-footer class="comment-footer">
+    <ion-toolbar>
+        <ion-row no-padding>
+            <ion-col no-padding>
+                <div class="divider"></div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-right>
+                <ion-button color="primary" class="send-request-btn" size="small" shape="round" (click)="sharePost()">
+                    Send
+                </ion-button>
+                <ion-button color="medium" class="send-request-btn" size="small" shape="round" (click)="close()">
+                    Cancel
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

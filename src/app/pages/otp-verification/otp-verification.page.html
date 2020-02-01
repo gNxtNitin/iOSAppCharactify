@@ -1,0 +1,30 @@
+<ion-header transparent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <!-- <ion-back-button></ion-back-button> -->
+            <ion-buttons slot="start">            
+                <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+            </ion-buttons>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding class="otp-verification-page" fullscreen>
+    <div class="header-label">Verification</div>
+    <ion-img class="custom-user-img" src="assets/images/verification.png"></ion-img>
+    <div class="todo-msg">Enter the verification code <br> received on your E-mail.</div>
+    <app-error-handler #errorHandler></app-error-handler>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="text-center">                
+                <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly: true}"></ng-otp-input>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <p>
+        <ion-button type="button" size="small" fill="clear" color="dark" class="no-captalize forgot-btn" (click)="reSendOtp()"><b>Verification code not
+            received - <span class="text-under-line">Resend</span></b></ion-button>
+    </p>
+    <ion-button [disabled]="enableSubmitBtn" size="large" expand="block" class="custom-button" (click)="verifyOtp()">
+        Verify
+    </ion-button>
+</ion-content>

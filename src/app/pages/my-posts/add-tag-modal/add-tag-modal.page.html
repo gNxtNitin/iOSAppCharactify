@@ -1,0 +1,57 @@
+<ion-header class="comment-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-icon slot="icon-only" name="arrow-back" (click)="close()"></ion-icon>      
+    </ion-buttons>
+    <ion-title>
+      Tag people
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="view-comment-list" fullscreen>
+  <app-error-handler #errorHandler></app-error-handler>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-chip *ngFor="let tag of taggedList">
+          <ion-avatar>
+            <img [src]="tag.UserProfilePic ? tag.UserProfilePic : 'assets/images/default-avatar.png'">
+          </ion-avatar>
+          <ion-label>{{tag.FirstName}}</ion-label>
+          <ion-icon name="close-circle" (click)="removeTaggedItem(tag)"></ion-icon>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-searchbar placeholder="Find friends by name" [(ngModel)]="searchFriends" mode="ios">
+  </ion-searchbar>
+
+  <ion-list *ngIf="searchFriends">
+    <ion-item *ngFor="let com of objectFromParent | searchMyFeedconnection:'FirstName,LastName,username':searchFriends" class="
+      comment-list" (click)="addItemToTagList(com)">
+      <ion-avatar slot="start">
+        <img [src]="com.UserProfilePic ? com.UserProfilePic : 'assets/images/default-avatar.png'">
+      </ion-avatar>
+      <ion-label class="comment-txt">
+        <h3>{{com.FirstName}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="comment-footer">
+  <ion-toolbar>
+    <ion-row no-padding>
+      <ion-col no-padding>
+        <div class="divider"></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-right>
+        <ion-button color="primary" class="send-request-btn" size="small" shape="round" (click)="addTag()">
+          Update
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

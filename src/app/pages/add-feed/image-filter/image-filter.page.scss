@@ -1,0 +1,78 @@
+.scroll-wrapper {
+    margin-top: 10px;
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.scroll-item {
+    display: inline-block;
+    text-align: center;
+    margin: 0 11px;
+    img {
+        max-height: 100px;
+    }
+    .rating-lable {
+        font-size: 10px;
+        margin: 5px 0;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        /* width: 60px; */
+        text-align: center;
+    }
+}
+
+.main-img-scroll-wrapper {
+    margin-top: 10px;
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.scroll-img-item {
+    display: contents;    
+    img {        
+        min-height: 239px;
+        width: 80%;
+        margin-left: 7px;
+        vertical-align: top;
+    }
+}
+
+.image-filter-header {
+    background: #fff;
+    ion-toolbar {        
+        --ion-color-base: #c2bfc2 !important;
+        --border-color: #c2bfc2;
+    }
+}
+
+.image-filter-header.header-md::after,
+.image-filter-header.header-ios::after {
+    display: block;
+}
+
+
+
+
+.filters-modal-footer {
+    ion-segment {
+        --background: white !important;
+    }
+    .segment-button-checked {
+        background: #fff;
+    }
+}
+
+.cropImage {
+    img {
+        max-width: 100%;
+        /* This rule is very important, please do not ignore this! */
+    }
+}
+
+.text-center {
+    text-align: center;
+}

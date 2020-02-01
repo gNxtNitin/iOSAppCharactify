@@ -1,0 +1,160 @@
+<ion-header class="setting-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>Settings</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="setting-page">
+
+    <app-error-handler #errorHandler></app-error-handler>
+    <ion-card>
+        <ion-card-header>
+            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+            <ion-card-title class="privacy-container">
+                <ion-icon name="lock" class="lock"></ion-icon>
+                <span>Privacy settings</span> </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col></ion-col>
+                    <ion-col text-center>
+                        <ion-row>
+                            <ion-col>Public</ion-col>
+                            <ion-col>Private</ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Family
+                    </ion-col>
+                    <ion-col text-center>
+                        <ion-radio-group>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.FamilyStaus===false ? changeStatus(0, 'family'):''"></div>
+                                    <ion-radio [checked]="radioOptions.FamilyStaus===false"></ion-radio>
+                                </ion-col>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.FamilyStaus===true ? changeStatus(1, 'family'):''"></div>
+                                    <ion-radio [checked]="radioOptions.FamilyStaus===true"></ion-radio>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Friends
+                    </ion-col>
+                    <ion-col text-center>
+                        <ion-radio-group>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.FriendsStaus===false ? changeStatus(0, 'friends'):''"></div>
+                                    <ion-radio [checked]="radioOptions.FriendsStaus===false"></ion-radio>
+                                </ion-col>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.FriendsStaus===true ? changeStatus(1, 'friends'):''"></div>
+                                    <ion-radio [checked]="radioOptions.FriendsStaus===true"></ion-radio>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Acquaintance
+                    </ion-col>
+                    <ion-col text-center>
+                        <ion-radio-group>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.AcquaintancesStaus===false ? changeStatus(0, 'acquaintance') : ''"></div>
+                                    <ion-radio [checked]="radioOptions.AcquaintancesStaus===false"></ion-radio>
+                                </ion-col>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.AcquaintancesStaus===true ? changeStatus(1, 'acquaintance'):''"></div>
+                                    <ion-radio [checked]="radioOptions.AcquaintancesStaus===true"></ion-radio>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Co-worker
+                    </ion-col>
+                    <ion-col text-center>
+                        <ion-radio-group>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.CoWorkersStaus===false ? changeStatus(0, 'coworkers') : ''"></div>
+                                    <ion-radio [checked]="radioOptions.CoWorkersStaus===false"></ion-radio>
+                                </ion-col>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.CoWorkersStaus===true ? changeStatus(1, 'coworkers') : ''"></div>
+                                    <ion-radio [checked]="radioOptions.CoWorkersStaus===true"></ion-radio>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Anyone
+                    </ion-col>
+                    <ion-col text-center>
+                        <ion-radio-group>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.AllCategory===false ? changeStatus(0, 'allcategory') : ''"></div>
+                                    <ion-radio [checked]="radioOptions.AllCategory===false"></ion-radio>
+                                </ion-col>
+                                <ion-col>
+                                    <div class="radio-event" (click)="!radioOptions.AllCategory===true ? changeStatus(1, 'allcategory') : ''"></div>
+                                    <ion-radio [checked]="radioOptions.AllCategory===true"></ion-radio>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                    </ion-col>
+                </ion-row>
+                <hr>
+                <!-- <ion-row>
+                    <ion-col text-right>
+                        <ion-button class="send-request-btn card-btn" size="small" shape="round"
+                            (click)="submitClicked()">
+                            Submit
+                        </ion-button>                        
+                    </ion-col>
+                </ion-row> -->
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title class="delete-account">
+                <ion-icon name="person" class="person"></ion-icon>
+                <ion-icon class="close" name="close"></ion-icon>
+                <span>Delete my account</span>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>Delete my account?</ion-col>
+                    <ion-col text-right>
+                        <ion-button class="send-request-btn card-btn" size="small" shape="round" (click)="deleteMyAccount()">
+                            Delete
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

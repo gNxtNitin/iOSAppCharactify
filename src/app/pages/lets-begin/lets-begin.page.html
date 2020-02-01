@@ -1,0 +1,24 @@
+<ion-header transparent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="lets-begin-page" fullscreen>
+    <ion-img src="assets/images/charactify-logo.png"></ion-img>
+    <app-error-handler #errorHandler></app-error-handler>
+
+    <div class="user-img-wrap">
+        <img *ngIf="userData?.UserProfilePic" [src]="userData?.UserProfilePic" class="user-image" />
+        <img *ngIf="!userData?.UserProfilePic" src="assets/images/profile-img1.jpg" class="user-image" />        
+        <ion-icon (click)="askImageSource()" name="md-add-circle" class="add-img-icon"></ion-icon>
+    </div>
+
+    <h6 class="ion-text-uppercase">WELCOME TO CHARACTIFY {{userData?.FirstName}}!</h6>
+
+    <ion-button size="large" class="theme-button" (click)="navigateToSelfRating()">
+        Let's Charactify
+    </ion-button>
+</ion-content>

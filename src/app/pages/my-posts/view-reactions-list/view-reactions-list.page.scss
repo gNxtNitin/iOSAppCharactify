@@ -1,0 +1,58 @@
+.view-reaction-list {
+    ion-segment-button ion-label {
+        max-width: 100px;
+        overflow: hidden;
+      }
+      .all-segement {
+        vertical-align: middle;
+        
+        line-height: 0px;
+        height: 11px !important;
+        text-align: center;
+      }
+      .selected-segment{
+        transform: scale(1.2);
+    border-bottom: 2px solid #888;
+      }
+      .segment-grid{
+        border-top: 1px solid #a8a5a5;
+        ion-row{
+            ion-col{
+                margin-left: 5px;
+                text-align: center;
+            }
+        }         
+      }
+
+      .scroll-wrapper {
+        overflow-x: unset;
+        width: 100%;
+        white-space: nowrap;
+        overflow-y: hidden;
+    }
+    .scroll-item {
+        display: inline-block;
+        margin: 0 10px;
+        height: 35px;
+        width: 35px;
+    }
+    
+
+}
+
+.reaction-header ion-toolbar {
+    
+    --ion-color-base: #c2bfc2 !important;
+    --border-color: #c2bfc2;
+    ion-title {
+        -webkit-padding-start: 7px;
+        padding-inline-start: 7px;
+        order: 0;
+        font-size: 1.1rem;
+    }
+}
+
+.reaction-header.header-md::after,
+.reaction-header.header-ios::after {
+    display: block;
+}

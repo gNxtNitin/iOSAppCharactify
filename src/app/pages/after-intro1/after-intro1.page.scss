@@ -1,0 +1,36 @@
+.after-intro-page {
+    height: 100vh;
+    flex-direction: column;
+    --background: #162636;
+    --color: #ffffff;
+    .content-wrap {
+        height: calc(100vh - 120px);
+        flex-direction: column;
+    }
+    .welcome-title {
+        margin: 40px 0 25px;
+        font-size: 21px;
+    }
+    ion-img {
+        max-height: 350px;
+        margin: 0 auto;
+    }
+    .turorial-text {
+        color: rgb(241, 241, 241);
+        font-size: 16px;
+        padding: 0 15px;
+        margin: 25px;
+    }
+    .continue-btn {
+        width: 110px;
+        margin: 0 auto;
+        height: 38px;
+        font-size: 15px;
+    }
+    .yes-btn {
+        --background: #07810a;
+    }
+    .no-btn {
+        --background: #923734;
+    }
+}

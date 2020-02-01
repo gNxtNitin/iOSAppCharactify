@@ -1,0 +1,197 @@
+.main-wrap {
+    height: 370px;
+    text-align: center;
+    margin: 0px 1px 0px 8px;
+}
+
+.trait {
+    position: absolute;
+    left: -78px;
+    top: -73px;
+}
+
+.trait.second {
+    position: absolute;
+    right: -81px;
+    top: -68px;
+    left: auto;
+}
+
+.trait.second:before {
+    position: absolute;
+    right: auto;
+    left: 2px;
+    bottom: -27px;
+    /* background: #4f4b60; */
+    width: 4px;
+    height: 40px;
+    content: "";
+    transform: rotate(48deg);
+    -webkit-transform: rotate(48deg);
+}
+
+.trait.third {
+    position: absolute;
+    right: -101px;
+    bottom: -41px;
+    left: auto;
+    top: auto;
+}
+
+.trait.third:before {
+    position: absolute;
+    right: auto;
+    left: -10px;
+    top: -15px;
+    bottom: 0px;
+    /* background: #4f4b60; */
+    width: 4px;
+    height: 40px;
+    content: "";
+    transform: rotate(120deg);
+    -webkit-transform: rotate(120deg);
+}
+
+.trait.fours {
+    position: absolute;
+    left: 21px;
+    bottom: -118px;
+    top: auto;
+}
+
+.trait.fours:before {
+    position: absolute;
+    right: auto;
+    left: 38px;
+    top: -40px;
+    bottom: 0;
+    /* background: #4f4b60; */
+    width: 4px;
+    height: 40px;
+    content: "";
+    transform: rotate(120deg);
+    -webkit-transform: rotate(181deg);
+}
+
+.trait.fives {
+    position: absolute;
+    left: -107px;
+    bottom: -29px;
+    top: auto;
+}
+
+.trait.fives:before {
+    position: absolute;
+    right: -17px;
+    /* left: -18px; */
+    top: -1px;
+    bottom: 0;
+    /* background: #4f4b60; */
+    width: 4px;
+    height: 40px;
+    content: "";
+    transform: rotate(233deg);
+    -webkit-transform: rotate(240deg);
+}
+
+.trait:before {
+    position: absolute;
+    right: 0px;
+    bottom: -26px;
+    /* background: #4f4b60; */
+    width: 4px;
+    height: 40px;
+    content: "";
+    transform: rotate(-44deg);
+    -webkit-transform: rotate(-44deg);
+}
+
+.trait .image {
+    position: relative;
+    display: block;
+    width: 79px;
+    height: 79px;
+    border-radius: 50%;
+    /* background: #4f4b60; */
+}
+
+.trait .image span {
+    /* color: #3c3b3b;
+    font-size: 14px;
+    position: absolute;
+    right: -15px;
+    bottom: 12px;
+    background: #4f4b60;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    padding-top: 10%; */
+
+    font-size: 11px;
+      position: absolute;
+      right: -15px;
+      bottom: 1%;
+      border-radius: 84%;
+      width: 31px;
+      height: 33px;
+      color: #8a1511;
+      padding-top: 12%;
+      font-weight: 700;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url(/assets/images/round-trait-circle/big-circle.png)
+}
+
+.ios .trait .image span {
+    font-size:9px;
+    padding-top:12%;
+}
+
+.trait h3 {
+    color: #3c3b3b;
+    font-size: 11px;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.trait .image img {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    /* margin: 4px 0; */
+}
+
+
+.honest-label {
+    color: #8d5b83;
+}
+.honorable-label {
+    color: #c50e7a;
+}
+.respectful-label {
+    color: #ab750a;
+}
+.fair-label {
+    color: #84904a;
+}
+.forgiving-label {
+    color: #a5498b;
+}
+.generous-label {
+    color: #0d8a7c;
+}
+.courageous-label {
+    color: #0f42af;
+}
+.polite-label {
+    color: #07a899;
+}
+.loving-label {
+    color: #8845b2;
+}
+.trustworthy-label {
+    color: #d54c15;
+}

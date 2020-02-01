@@ -1,0 +1,54 @@
+<ion-header class="my-connection-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">            
+            <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        </ion-buttons>
+        <ion-title>My Connections</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="my-connection-page" [scrollEvents]="true" (ionScrollEnd)="getConnectionsList()">
+    <app-error-handler #errorHandler></app-error-handler>
+
+    <div *ngIf="myConnectionList.length">
+        <ion-card *ngFor="let item of myConnectionList; let i = index" class="custom-card">
+
+            <ion-item>
+                <ion-avatar (click)="naviagetToOtherProfilePage(item)" slot="start" style="margin-bottom: 0;">
+                    <img [src]="item.userprofilepic ? item.userprofilepic : 'assets/images/default-avatar.png'">
+                </ion-avatar>
+                <ion-label class="ion-no-margin ion-text-capitalize">{{item.firstname}} {{item.lastname}}</ion-label>
+                <ion-img class="friendship-icon" slot="end" [src]="'assets/images/friendship-icon.png'" (click)="naviagetToFriendshipPage(item)"></ion-img>
+            </ion-item>
+
+            <ion-card-content>
+                <ion-row>
+                    <ion-col align-self-end align-self-center size="12" class="ion-text-end">
+                        <ion-button shape="round" class="send-request-btn" size="small" color="primary" (click)="sendMsg(item)">
+                            <img src="assets/images/chat-icon.png" style="width: 25px;">
+                        </ion-button>
+                        <ion-button shape="round" class="send-request-btn" size="small" color="medium" (click)="performMute(item)">
+                            <img [src]="item.IsMute == 1 ? 'assets/images/disbale-sound.png' : 'assets/images/enable-sound.png'" style="width: 28px;">
+                        </ion-button>                        
+                        <ion-button style="width:90px" *ngIf="!(item.remainingdays <= 0)" class="send-request-btn" size="small" shape="round" (click)="charactify(item)">
+                            Charactified
+                        </ion-button>
+                        <ion-button *ngIf="(item.remainingdays <= 0)" class="send-request-btn" size="small" shape="round" (click)="charactify(item)">
+                            Charactify
+                        </ion-button>
+                        <ion-button color="medium" class="send-request-btn" size="small" shape="round" (click)="removeConnection(item.ConnectionID,i)">
+                            Unfriend
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-card *ngIf="!myConnectionList.length">
+        <ion-card-content text-center>
+            <h3>No connections found.</h3>
+            <p>Start Inviting!</p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

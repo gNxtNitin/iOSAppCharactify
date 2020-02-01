@@ -1,0 +1,121 @@
+<ion-header class="image-filter-header">
+    <ion-toolbar *ngIf="!showFiltersTab">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title class="text-center">
+            Select image for filter
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="moveToNext()" color="secondary" fill="clear">Next</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar *ngIf="showFiltersTab && selectedFilterTab == 'imageFilter'">
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="close()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="text-center">Filter Image</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button icon-only color="secondary" fill="clear" (click)="updateFilteredImage()">
+                <ion-icon name="checkmark"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar *ngIf="showFiltersTab && selectedFilterTab == 'imageCrop'">
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="close()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="text-center">Edit Image</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button icon-only color="danger" fill="clear" (click)="reset()">
+                <ion-icon name="refresh"></ion-icon>
+            </ion-button>
+            <ion-button icon-only color="secondary" fill="clear" (click)="updateCropedImage()">
+                <ion-icon name="checkmark"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-error-handler #errorHandler></app-error-handler>
+    <div *ngIf="!showFiltersTab">
+        <div class="main-img-scroll-wrapper">
+            <div class="scroll-img-item" *ngFor="let item of selectedImagesList">
+                <img [class]="item.filter" [src]="item.imagePath" (click)="applyFilterTOSelectedImage(item)">
+            </div>
+        </div>
+        
+    </div>
+
+    <div *ngIf="showFiltersTab && selectedFilterTab == 'imageFilter'">
+        <div class="main-img-scroll-wrapper text-center">
+            <div class="scroll-img-item">
+                <img [class]="selectedObject.filter" [src]="selectedObject.imagePath">
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="cropImage container" *ngIf="showFiltersTab && selectedFilterTab == 'imageCrop'">
+        <angular-cropper [class]="selectedObject.class" #angularCropper [cropperOptions]="cropperOptions"
+            [imageUrl]="selectedObject.imagePath"></angular-cropper>
+        <ion-row>
+            <ion-col col-4 class="text-center">
+                <ion-button color="secondary" fill="outline" icon-left (click)="rotate()">
+                    <ion-icon name="refresh"></ion-icon> 90 deg
+                </ion-button>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+                <ion-button color="secondary" fill="outline" (click)="scaleX()">
+                    Flip X
+                </ion-button>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+                <ion-button color="secondary" fill="outline" (click)="scaleY()">
+                    Flip Y
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col padding>
+                <ion-item>
+                    <ion-label position="stacked">Add a text on image</ion-label>
+                    <ion-textarea auto-grow="true" placeholder="Enter some text for image"
+                        [(ngModel)]="selectedObject.Description" style="max-height: 250px;">
+                    </ion-textarea>
+                </ion-item>
+
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-footer class="filters-modal-footer">
+        <div class="scroll-wrapper" *ngIf="!showFiltersTab">
+                <div class="scroll-item" *ngFor="let item of filterList" (click)="changeClass(item)">
+                    <div class="rating-lable" style="text-transform: capitalize">{{item.class}}</div>
+                    <img [class]="item.class" [src]="selectedFilterImage" style="opacity: 0.2;">
+                </div>
+            </div>
+        <div class="scroll-wrapper" *ngIf="showFiltersTab && selectedFilterTab == 'imageFilter'">
+                <div class="scroll-item" *ngFor="let item of filterList" (click)="changeClass1(item)">
+                    <div class="rating-lable" style="text-transform: capitalize">{{item.class}}</div>
+                    <img [class]="item.class" [src]="selectedObject.imagePath">
+                </div>
+            </div>
+    <ion-segment [(ngModel)]="selectedFilterTab" (ionChange)="segmentChanged($event)" *ngIf="showFiltersTab">
+        <ion-segment-button layout="icon-start" value="imageFilter" (click)="showFilters()" checked>
+            <ion-label>FILTER</ion-label>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start" value="imageCrop" (click)="showEdit()">
+            <ion-label>EDIT</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</ion-footer>

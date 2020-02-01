@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1076006751428-4dv8gnrddjrolrtb05bo3i0a8i0sco8a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1076006751428-4dv8gnrddjrolrtb05bo3i0a8i0sco8a</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1076006751428-dqshnu8lln463q32vq4a89dr6dciclnr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBS_T4Y3VmLFXM9lvAs42SqRKqxCHm-5tg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1076006751428</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gnxt.charactify</string>
+	<key>PROJECT_ID</key>
+	<string>app-charactify</string>
+	<key>STORAGE_BUCKET</key>
+	<string>app-charactify.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1076006751428:ios:07a7264563d63d49688d91</string>
+	<key>DATABASE_URL</key>
+	<string>https://app-charactify.firebaseio.com</string>
+</dict>
+</plist>

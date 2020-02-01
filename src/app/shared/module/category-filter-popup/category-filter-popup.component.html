@@ -1,0 +1,47 @@
+<ion-list class="filter-view-all-category">
+    <ion-radio-group [(ngModel)]="CategoryFilterName" (ionChange)="onFilterChange()">
+        <ion-item-divider>
+            <ion-label><strong>Sort by - </strong>Category</ion-label>
+        </ion-item-divider>
+
+        <ion-item>
+            <ion-label>Family</ion-label>
+            <ion-radio slot="end" value="Family"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Friends</ion-label>
+            <ion-radio slot="end" value="Friends"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Co-worker</ion-label>
+            <ion-radio slot="end" value="CoWorkers"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Acquaintances</ion-label>
+            <ion-radio slot="end" value="Acquaintances"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>All</ion-label>
+            <ion-radio slot="end" value="All"></ion-radio>
+        </ion-item>
+
+        <ion-item-divider>
+            <ion-label><strong>Sort by - </strong>Score</ion-label>
+        </ion-item-divider>
+
+        <ion-item>
+            <ion-label>Low to High</ion-label>
+            <ion-radio slot="end" value="ltoh" checked></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>High to Low</ion-label>
+            <ion-radio slot="end" value="htol" checked></ion-radio>
+        </ion-item>
+
+    </ion-radio-group>
+</ion-list>

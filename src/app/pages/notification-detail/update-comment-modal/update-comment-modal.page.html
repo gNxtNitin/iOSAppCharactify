@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-item lines="none">
+            <ion-avatar slot="start">
+                <img [src]="userData.UserProfilePic ? userData.UserProfilePic : 'assets/images/default-avatar.png'">
+            </ion-avatar>
+            <ion-label>
+                {{userData.FirstName}}
+            </ion-label>
+        </ion-item>
+        <ion-row no-padding>
+            <ion-col no-padding>
+                <div class="divider"></div>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <ion-textarea padding rows="6" cols="20" [(ngModel)]="description" placeholder="Update your comment..."></ion-textarea>
+</ion-content>
+<ion-footer class="comment-footer">
+    <ion-toolbar>
+        <ion-row no-padding>
+            <ion-col no-padding>
+                <div class="divider"></div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-right>
+                <ion-button color="primary" class="send-request-btn" size="small" shape="round"
+                    (click)="updateComment()">
+                    Update
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

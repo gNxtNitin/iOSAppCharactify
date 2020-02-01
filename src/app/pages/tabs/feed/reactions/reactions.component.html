@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="wrapper" (mouseenter)="toggleShow()" (mouseleave)="toggleShow()">
+          <div class="emojis">
+            <span *ngFor="let emoji of emojiList; index as i;">
+              <img [src]="'assets/images/emoji/'+emoji.key+'.gif'" width='75px' (click)="react(emoji)">
+            </span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

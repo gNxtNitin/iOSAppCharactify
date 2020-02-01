@@ -1,0 +1,52 @@
+<ion-header class="gallery-header">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="close()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>New Post</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="moveToNext('images')" color="secondary" fill="clear">Next</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-grid>
+        <ion-row>
+            <ion-col no-padding>
+                <div class="selected-image">
+                    <img [src]="selectedImage">
+                    <ion-button color="light" [ngClass]="isMultiSelect ? 'multiSelect' : ''" class="multi-select-icon"
+                        (click)="multiSelectSelected()">
+                        <ion-icon color="dark" name="albums"></ion-icon>
+                    </ion-button>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-content fullscreen class="new-post-modal" text-center (ionScrollEnd)="loadData('b')">
+    <app-error-handler #errorHandler></app-error-handler>
+    <div id="initilizer"></div>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4" *ngFor="let item of photosList">
+                <img class="item-img" [src]="item.id" (click)="selecteImage(item)"
+                    [ngClass]="item.selected ? 'select-filter' : ''">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer class="search-page-header" class="new-post-modal-footer">
+    <ion-segment [(ngModel)]="newPost" (ionChange)="segmentChanged($event)">
+        <ion-segment-button layout="icon-start" value="gallery" (click)="getPhotosFromDevice()" checked>
+            <ion-label>Gallery</ion-label>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start" value="photo" (click)="openCamera()">
+            <ion-label>Photo</ion-label>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start" value="video" (click)="videoCamera()">
+            <ion-label>Video</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</ion-footer>
