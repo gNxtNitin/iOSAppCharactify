@@ -24,6 +24,19 @@
     }
 }
 
+.apple-button {
+    --background: #333333;
+    margin-bottom: 3%;
+    .btn-left-icon {
+        border-bottom-right-radius: unset;
+        border-top-right-radius: unset;
+        ion-icon{
+            font-size: 50px;
+            margin-top: -5px;
+        }
+    }
+}
+
 .email-button {
     --background: #979593;
     margin-bottom: 3%;
@@ -40,7 +53,8 @@
 
 .gmail-button,
 .facebook-button,
-.email-button {
+.email-button,
+.apple-button {
     --border-radius: 40px;
     text-transform: initial !important;
     font-size: 1rem;

@@ -4,9 +4,12 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { PostProvider } from './../../api-provider/api.services';
 import { ServicesConstant } from './../../api-provider/end-points';
 import { HelperProvider } from './../../helper-services/helper.services';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { ErrorHandlerComponent } from './../../shared/module/error-handler/error-handler.component';
+
+declare var window: any;
+
 @Component({
   selector: 'app-signup-options',
   templateUrl: './signup-options.page.html',
@@ -15,14 +18,20 @@ import { ErrorHandlerComponent } from './../../shared/module/error-handler/error
 export class SignupOptionsPage implements OnInit {
 
   @ViewChild('errorHandler') erroHandler: ErrorHandlerComponent;
+  isIOS: boolean;
   constructor(
     private router: Router,
     private googlePlus: GooglePlus,
     private service: PostProvider,
     private helperService: HelperProvider,
     private navCtrl: NavController,
-    private fb: Facebook
-  ) { }
+    private fb: Facebook,
+    private pl: Platform
+  ) { 
+    if (this.pl.is("ios") || this.pl.is("ipad") || this.pl.is("iphone")) {
+      this.isIOS = true;
+    }
+  }
 
   ngOnInit() {
 
@@ -87,6 +96,34 @@ export class SignupOptionsPage implements OnInit {
           });
       }
     });
+  }
+
+  signUpUsingApple() {
+    console.log('signing using apple');
+    if (window.cordova) {
+      window.cordova.plugins.SignInWithApple.signin(
+        { requestedScopes: [0, 1] },
+        (success: any) => {
+          console.log('apple login success response = ', JSON.stringify(success));
+          localStorage.setItem('appleResponse', JSON.stringify(success));
+          let payload: any = {
+            EmailId: success.email,
+            UserName: success.email,
+            Password: "",
+            FirstName: success.fullName.givenName,
+            LastName: success.fullName.familyName,
+            UserProfilePic: "",
+            CreatedVia: 'Apple',
+            PhoneNo: "",
+            UniqueID: success.user
+          }
+          this.doSignUp(payload);
+        },
+        (err: any) => {
+          console.log('apple signing error = ', err);
+        }
+      )
+    }
   }
 
   doSignUp(payload) {

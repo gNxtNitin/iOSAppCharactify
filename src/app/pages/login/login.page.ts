@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { PostProvider } from './../../api-provider/api.services';
 import { ServicesConstant } from './../../api-provider/end-points';
@@ -10,6 +10,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 declare const $: any;
+declare var window: any;
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   formSubmitted: any = false;
+  isIOS: boolean;
   constructor(
     private router: Router,
     private navCtrl: NavController,
@@ -29,8 +31,12 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private helperService: HelperProvider,
     private googlePlus: GooglePlus,
-    private fb: Facebook
+    private fb: Facebook,
+    private pl: Platform
   ) {
+    if (this.pl.is("ios") || this.pl.is("ipad") || this.pl.is("iphone")) {
+      this.isIOS = true;
+    }
     this.loginForm = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -71,6 +77,34 @@ export class LoginPage implements OnInit {
       this.erroHandler.showError(error.error.data);
       this.helperService.dismissLoader();
     });
+  }
+
+  signUpUsingApple() {
+    console.log('signing using apple');
+    if (window.cordova) {
+      window.cordova.plugins.SignInWithApple.signin(
+        { requestedScopes: [0, 1] },
+        (success: any) => {
+          console.log('apple login success response = ', JSON.stringify(success));
+          localStorage.setItem('appleResponse', JSON.stringify(success));
+          let payload: any = {
+            EmailId: success.email,
+            UserName: success.email,
+            Password: "",
+            FirstName: success.fullName.givenName,
+            LastName: success.fullName.familyName,
+            UserProfilePic: "",
+            CreatedVia: 'Apple',
+            PhoneNo: "",
+            UniqueID: success.user
+          }
+          this.doSignUp(payload);
+        },
+        (err: any) => {
+          console.log('apple signing error = ', err);
+        }
+      )
+    }
   }
 
   signInUsingFacebook() {

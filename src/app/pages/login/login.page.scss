@@ -41,6 +41,17 @@
     --box-shadow: unset;
 }
 
+.apple-button {
+    --background: #333333;
+    width: 45px;
+    margin-left: 20px;
+    .btn-left-icon {
+        ion-icon{
+            font-size: 40px;
+        }
+    }
+}
+
 .main {
     width: 100%;
     height: auto;

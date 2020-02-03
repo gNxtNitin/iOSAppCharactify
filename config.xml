@@ -57,6 +57,21 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+            <string>We would like to access camera for taking photos</string>
+        </config-file>
+        <config-file parent="NSContactsUsageDescription" platform="ios" target="*-Info.plist">
+            <string>We need contacts access to search your friends</string>
+        </config-file>
+        <config-file parent="NSContactsUsageDescription" platform="ios" target="*-Info.plist">
+            <string>We need contacts access to search your friends</string>
+        </config-file>
+        <config-file parent="NSMicrophoneUsageDescription" platform="ios" target="*-Info.plist">
+            <string>We need microphone access to record sounds</string>
+        </config-file>
+        <config-file parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+            <string>We need to photo library access to get pictures from there</string>
+        </config-file>
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />

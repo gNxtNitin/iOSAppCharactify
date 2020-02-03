@@ -25,6 +25,16 @@
             <div class="gmail-divider"></div>
             <div class="btn-text">Connect with Facebook</div>
         </ion-button>
+        <!-- Apple Sign In -->
+        <ion-button type="button" size="large" expand="block" class="apple-button" (click)="signUpUsingApple()"
+            *ngIf="isIOS">
+            <ion-avatar slot="start" class="btn-left-icon">
+                <ion-icon name="logo-apple"></ion-icon>
+            </ion-avatar>
+            <div class="gmail-divider"></div>
+            <div class="btn-text">Connect with Apple</div>
+        </ion-button>
+        <!-- Apple Sign In End -->
         <ion-button type="button" size="large" expand="block" class="email-button" (click)="goToSignUp()">
             <ion-icon class="btn-left-icon" slot="start" name="mail"></ion-icon>
             <div class="gmail-divider"></div>

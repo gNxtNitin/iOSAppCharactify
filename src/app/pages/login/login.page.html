@@ -20,6 +20,15 @@
                 <img src="assets/images/facebook-icon.png">
             </ion-avatar>
         </ion-button>
+        <!-- Apple Sign In -->
+        <ion-button type="button" shape="round" class="apple-button" (click)="signUpUsingApple()"
+            *ngIf="isIOS">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-avatar class="btn-left-icon">
+                <ion-icon name="logo-apple"></ion-icon>
+            </ion-avatar>
+        </ion-button>
+        <!-- Apple Sign In End -->
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
